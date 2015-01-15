@@ -55,8 +55,8 @@ public class NewUsersDay implements Serializable, JSONAware {
 			date.append(digits[i]);
 		}
 
-		json.put(day, date.toString());
-		json.put(newUsers, newUsers);
+		json.put("day", date.toString());
+		json.put("newUsers", newUsers);
 		return json.toJSONString();
 	}
 }
