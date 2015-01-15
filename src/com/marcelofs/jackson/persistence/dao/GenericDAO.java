@@ -21,9 +21,14 @@ public class GenericDAO<T> {
 	}
 
 	protected Query newQuery(String filter) {
-		Query q = pm.newQuery(type.getClass());
-		q.setFilter(filter);
-		return q;
+		try {
+			Query q = pm.newQuery(type.newInstance().getClass());
+			q.setFilter(filter);
+			return q;
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public void add(T t) {
