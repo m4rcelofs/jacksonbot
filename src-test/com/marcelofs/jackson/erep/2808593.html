@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Product">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="title" content="eRepublik" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="The New World" />
+<meta name="keywords" content="" />
+<meta name="language" content="en" />
+<meta property="og:image" content="http://www.erepublik.net/images/modules/homepage/logo.png" />
+<meta itemprop="name" content="eRepublik - The New World | Online Social Strategy Game" />
+<meta itemprop="description" content="Create your Citizen and you will have the opportunity to develop your military, economy or political career." />
+<meta itemprop="image" content="http://www.erepublik.net/images/modules/homepage/logo.png" />
+
+<title>eRepublik</title>
+
+<link rel="shortcut icon" href="/images/favicon.ico" />
+
+<link href="//www.erepublik.net/css/fonts/Franchise/font.css?1309958974" rel="stylesheet" type="text/css" />
+<link href="//www.erepublik.net/css/fonts/Delicious/font.css?1309958974" rel="stylesheet" type="text/css" />
+<link href="//www.erepublik.net/css/fonts/DsDigital/font.css?1309958974" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin-ext,cyrillic,latin" rel='stylesheet' type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&subset=latin-ext,cyrillic,latin" rel='stylesheet' type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:400,300,600,700,800&subset=latin,greek-ext,cyrillic-ext,greek,latin-ext,cyrillic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Anonymous+Pro:400,700&subset=latin,cyrillic,greek" rel="stylesheet" type="text/css">
+<link href="//www.erepublik.net/css/jquery.pagewalkthrough.css" rel="stylesheet" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="//www.erepublik.net/css/cmp/layout.1421248301.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="//www.erepublik.net/css/cmp/app.1421248300.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="//www.erepublik.net/css/cmp/my_land.1421248302.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="//www.erepublik.net/css/cmp/sales.1421248303.css" type="text/css" media="screen" />
+
+<link rel="stylesheet" href="http://www.erepublik.net/css/cmp/anniversary.1421248297.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/threads/messages.css?1412241135" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/threads/tokeninput.css?1412241135" type="text/css" media="screen" />
+<link rel="stylesheet" href="/css/widearea.css?1412241135" type="text/css" media="screen" />
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="//www.erepublik.net/css/cmp/ie.css" type="text/css" media="screen" />
+<![endif]-->
+
+<script type="text/javascript" charset="utf-8">
+	var erepublik = {
+		settings: {
+			notifications: 0,
+			hostname: 'www.erepublik.com',
+			domainname: 'erepublik.com',
+			culture: 'en',
+			economyhostname: 'economy.erepublik.com',
+			cookielessHost: 'www.erepublik.net',
+			isLive: true ? true : false
+		},
+		citizen: {
+			citizenId: 1234,
+			country: '9',
+			currency: 'BRL',
+			isEmpire: true,
+			countryLocationName: 'Croatia',
+			countryLocationId: '63',
+			energy: 190,
+			energyToRecover: 650,
+			gold: 9999,
+			currencyAmount: 99999,
+			userLevel: 92,
+            hasCoreLoopAccess: false,
+            canWorkTrainAgainIn: 30085		},
+		misc: {
+			runningOnKongregate: 'false'
+		},
+		promos: {
+			consumption_boost: '',
+			winter_events: ''
+		},
+		shortcuts: {
+			links: {"inventory":"\/\/www.erepublik.com\/en\/economy\/inventory","myland":"\/\/www.erepublik.com\/en\/economy\/myCompanies","campaigns":"\/\/www.erepublik.com\/en\/military\/campaigns","top_news":"\/\/www.erepublik.com\/en\/news\/international","new_message":"\/\/www.erepublik.com\/en\/main\/messages-compose\/0","world_map":"\/\/www.erepublik.com\/en\/map","military_unit":"\/\/www.erepublik.com\/en\/main\/group-home\/military","alerts":"\/\/www.erepublik.com\/en\/main\/messages-alerts\/1"},
+			names: {"inventory":"Storage","myland":"My places","campaigns":"Military campaigns","top_news":"Top news","new_message":"New Message","world_map":"World map","military_unit":"Military unit","alerts":"Alerts"}		},
+		i18n: {
+			shortcut: 'Shortcut:',
+			missions: {
+				status1Title: 'New mission',
+				status2Title: 'Ongoing mission',
+				status3Title: 'Click to complete',
+				status4Title: 'Rewarded',
+			},
+			countdownLang: {
+				daysLabel: 		'Days',
+				dayLabel: 		'Day',
+				hoursLabel: 	'Hrs',
+				minutesLabel: 	'Min',
+				secondsLabel: 	'Sec',
+			},
+			boosterActivation: {
+				baConfirm: 		'Are you sure you want to use this Damage Booster?',
+				baActivate: 	'Activate Damage Booster',
+				baYour: 		'Your ',
+				baAvailability: 'Damage Booster availability',
+				baDisabled: 	'A better Damage Booster is already active',
+			}
+		}
+	}
+
+	var SERVER_DATA = {
+		csrfToken          : '1234567890'
+	};
+
+	window.confirmation = {
+		ok: 'ok',
+		yes: 'yes',
+		no: 'no'
+	};
+
+</script>
+<script type="text/javascript" charset="utf-8" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src='//www.erepublik.com/js/jquery.min.js'>\x3C/script>")</script>
+<script type="text/javascript">var $j = jQuery.noConflict();</script>
+<script type="text/javascript" src="/js/cmp/erepublik.1421248297.js"></script>
+<script type="text/javascript" src="/js/citizen/energy.1418981912.js"></script>
+<script type="text/javascript" src="/js/awards/awards.1412241139.js"></script>
+<script type="text/javascript" src="/js/strophe.js"></script>
+<script type="text/javascript" src="/js/strophe.flxhr.js"></script>
+<script type="text/javascript" src="/js/pvp/bind.js"></script>
+
+
+<script type="text/javascript">
+	// these get assigned on join-pvp-queue now
+	// because that is the place where the balancing gets done
+	ErpkPvp.bosh_service = 'unassigned2';
+	ErpkPvp.muc_host = 'unassigned1';
+	ErpkPvp.citizenId = 1234;
+</script>
+
+
+<script type="text/javascript" src="/js/global.1412241139.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	if (top !=self) {
+		top.location=self.location;
+	}
+</script>
+
+<script type="text/javascript" src="/js/threads/jquery.tokeninput.js?1412241140"></script><script type="text/javascript" src="/js/threads/messages.js?1412241140"></script><script type="text/javascript" src="/js/jquery.limitMaxlength.js?1412241140"></script><script type="text/javascript" src="/js/widearea.custom.js?1412241140"></script>
+
+<script type="text/javascript" charset="utf-8">
+	var citizen_regionList_select = "Please select a region";
+	var citizen_regionList_no_region = "The country selected does not have any regions.";
+	var citizen_items_confirm = "Are you sure you want to throw away this item? Maybe you want to donate it to someone else.";
+	var citizen_friends_prev = "Prev";
+	var citizen_friends_next = "Next";
+	var company_browsers_quality_level = "Quality Level";
+	var election_list_select_party = "Please select a party";
+	var scriptFeeds_countryAccounts_choose = "Choose";
+	var scriptFeeds_proposedCongressman_search = "Search";
+	var scriptFeeds_proposedCongressman_close = "Close";
+	var scriptFeeds_proposedCongressman_replace = "Replace";
+	var scriptFeeds_proposedCongressman_close = "Close";
+	var scriptFeeds_proposedCongressman_presentation = "Presentation";
+	var scriptFeeds_proposedCongressman_no_presentation = "No presentation";
+	var scriptFeeds_regionList_select = "Please select a region";
+	var register_region_list_belongs_to = "annexed by ";
+	var citizenship_application_accepted = "Accepted!"
+	var citizenship_application_canceled = "You have canceled your citizenship application"
+	var citizenship_application_cancel_confirm = "Are you sure you want to cancel your citizenship application?"
+	var company_market_offers_invalid_amount = "Please enter a valid amount";
+	var company_market_offers_invalid_price = "Please enter a valid price";
+	var company_market_offers_invalid_country = "Please select a new market";
+	var company_market_offers_embargo_confirm = "Even if you buy this market license, you won't be able to trade with this country due to a trading embargo. Are you sure you want to buy this market license?";
+	var company_market_offers_atwar_confirm = "Even if you buy this market license, you won't be able to trade with this country due to a war. Are you sure you want to buy this market license?";
+	var company_market_offers_remove_confirm = "Because your company has changed it's product customization, you cannot take this products back into your company stock anymore. However, you can remove the current market offer by destroying your products. Do you want to proceed and destroy these products?";
+	var company_create_same_industry_error = "You cannot own two companies in the same industry.";
+	var citizen_profile_show_all_skills = "show all skills";
+	var citizen_profile_hide_all_skills = "hide all skills";
+	var citizen_move_countryList_select = "Please select a country.";
+	var citizen_move_regionList_select = "Please select a region";
+	var timeManagement_buy_wellness_pack_confirm = "Are you sure you want to buy a health pack for %%1%% Gold?";
+	var company_customize = "All products in stock, finished components and components in progress will be lost. Are you sure?";
+	var missions_unlock_confirm = "Are you sure you want to unlock for %%1%% Gold?";
+	var migrate_company_industry_confirm = "Are you sure that you want to migrate the %%1%% from %%2%% industry into %%3%% industry? Only one migration is allowed and its effects are irreversible";
+	var eat_food_confirm = "One unit of quality %%1%% food will be consumed but you will recover only %%2%% Energy. Would you like to use it anyway?";
+	var energy_confirm = "You are about to consume an Energy Bar. This will restore your Energy with %%1%% without affecting your daily food consumption limit. Continue?";
+	var energy_confirm_winter_treat = "You are about to consume a Treat. This will restore your Energy with %%1%% without affecting your daily food consumption limit. Continue?";
+</script>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-2001550-1']);
+	_gaq.push(['_setDomainName', 'erepublik.com']);
+	_gaq.push(['_trackPageview']);
+
+	
+	(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+
+
+
+<script type="text/javascript">
+	var globalAlerts = [];
+</script>
+
+</head>
+<body id="messages" class="">
+	<div id="notify_clone" style="display:none; visibility:hidden;">
+		<div class="notification_holder">
+			<div data-bind="notification_item" class="notification">
+				<div class="notification_icon_holder">
+					<img class="notification_icon" data-bind="notification_icon" src="http://s2.www.erepublik.net/images/parts/pixel.gif" alt="" />
+					<img class="notification_flag" data-bind="notification_flag" src="http://s2.www.erepublik.net/images/parts/pixel.gif" alt="" />
+				</div>
+				<em data-bind="notification_title"></em>
+				<strong data-bind="notification_content"></strong>
+				<span><span><q>&#8250;</q></span></span>
+				<a class="close" data-bind="notification_close" href="javascript:;" title="">&#10006;</a>
+				<a class="goto" data-bind="notification_url" href="javascript:;" title=""></a>
+			</div>
+		</div>
+	</div>
+
+	<a id="scrollToTop" class="scrollToTop" href="javascript:;"></a>
+
+	<div id="fb-root"></div>
+	<script type="text/javascript">
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId: '300511377223',
+				status: true,
+				cookie: true,
+				xfbml: true,
+				channelUrl: 'http://www.erepublik.com/xd_receiver.htm'
+			});
+		};
+		(function(d){
+		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		 if (d.getElementById(id)) {return;}
+		 js = d.createElement('script'); js.id = id; js.async = true;
+		 js.src = "//connect.facebook.net/en_US/all.js";
+		 ref.parentNode.insertBefore(js, ref);
+	   }(document));
+	</script>
+	<!--[if lt IE 9]>
+	<script type="text/javascript">
+			var IE6UPDATE_OPTIONS = {
+					icons_path: "/images/ie6/"
+			}
+	</script>
+	<script type="text/javascript" src="http://www.erepublik.com/js/ie6update.js"></script>
+	<![endif]-->
+<div class="at">
+	<div class="ath">
+		<a href="javascript:;" class="ambient_toggler"><span>Ambient on/off</span></a>
+	</div>
+</div>
+	<div id="container">
+
+		<!-- header -->
+		<div id="header">
+					<div id="logoNew" class="" title="eRepublik - Online Strategy Game">
+				<a href="http://www.erepublik.com/en" title="eRepublik - Online Strategy Game"><span>eRepublik – Online Strategy Game</span></a>
+			</div>
+
+			<!-- start header_top -->
+			<div class="header_top">
+								<div class="fb_like ">
+					<iframe src="http://www.facebook.com/plugins/like.php?app_id=210611115655687&amp;href=http://www.facebook.com/eRepublik&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:118px; height:21px;float:left;clear:both;" allowTransparency="true"></iframe>
+
+					<a href="http://www.facebook.com/eRepublik">eRepublik Fan Page</a>
+				</div>
+
+								<div class="erpk_time">
+					<span class="eday">
+						Day <strong>2,612</strong>					</span>
+					<span class="date">Jan 14</span>
+					<span id="live_time" class="time"></span>
+				</div>
+				<div id="searchholder">
+					<form id="search" method="get" action="http://www.erepublik.com/en/main/search/">
+						<label for="search_field">Search citizen</label>
+						<input type="text" name="q" id="search_field" value="" class="field">
+						<input type="submit" name="commit" value="" class="submit" disabled="disabled">
+					</form>
+				</div>
+				
+														<a href="/en/logout" class="logout">Logout</a>
+									
+			</div>
+			<!-- end header_top -->
+
+
+			<!-- start new menu -->
+						<div id="newMenu">
+				<ul id="nav">
+					<li id="menu1">
+						<a href="/en"><span>Home</span></a>
+					</li>
+					<li id="menu2">
+												<a href="javascript:;">
+							<span>My places</span>
+						</a>
+						<ul>
+							<li><a href="http://www.erepublik.com/en/economy/myCompanies">Companies</a></li>
+							<li><a href="http://www.erepublik.com/en/economy/training-grounds">Training grounds</a></li>
+							<li><a href="http://www.erepublik.com/en/economy/inventory">Storage</a></li>
+							<li><a href="http://www.erepublik.com/en/economy/advanced-buildings">Advanced buildings</a></li>
+						</ul>
+					</li>
+					<li id="menu3">
+						<a href="/en/military/campaigns"><span>Wars</span></a>
+					</li>
+										<li id="menu4">
+						<p></p>
+						<a href="javascript:;"><span>Market</span></a>
+						<ul>
+							<li><a href="/en/economy/market/9">Marketplace</a></li>
+							<li><a href="/en/economy/job-market/63">Job market</a></li>
+							<li><a href="/en/economy/exchange-market/">Monetary market</a></li>
+							<li><a href="http://www.erepublik.com/en/economy/buy-company/9">Companies for sale</a></li>
+						</ul>
+					</li>
+					<li id="menu5">
+						<a href="javascript:;"><span>
+							Community</span>
+													</a>
+						<ul>
+														<li><a href="/en/country/economy/Brazil" rel="nofollow">My Country</a></li>
+														<li><a href="/en/main/group-home/military">My Military Unit</a></li>
+							<li><a href="/en/main/my-party" rel="nofollow">My Party</a></li>
+														<li><a href="/en/main/my-newspaper" rel="nofollow">My Newspaper</a></li>
+							<li><a href="http://forum.erepublik.com"  rel="nofollow">Forum</a></li>
+							<li><a href="/en/main/alliances" rel="nofollow">Alliances</a></li>
+							<li><a href="/en/main/elections">Elections</a></li>
+							<li><a href="/en/main/rankings-countries" rel="nofollow">Rankings								 </a></li>
+							                            
+							<li><a href="/en/map"  rel="nofollow">World map</a></li>
+						</ul>
+					</li>
+										<li id="menu6">
+
+						
+							<a href="/en/get-gold/gold"><span>Gold & Extras</span></a>
+											</li>
+
+									</ul>
+			</div>
+						<!-- end new menu -->
+
+		</div>
+		<!-- end header -->
+
+		<div class="sidebar_wrapper ">
+		<div id="large_sidebar">
+		<div class="sidebar">
+			<div class="sidebar_container">
+								<a id="financier" href="/en/citizen/profile/1234"></a>
+				<div class="user_section" style="position: relative;">
+										<a href="/en/citizen/profile/1234" class="user_avatar" title="nick">
+						<img src="http://avatar.url" alt="nick" width="55" height="55" />
+													<span><b>View Profile</b></span>
+											</a>
+										<div class="user_info">
+						<div class="user_notify">
+							<a href="/en/main/messages-inbox" title="New messages: 0" class="notify nmail">
+																							</a>
+							<a href="/en/main/messages-alerts/1" title="New alerts: 0" class="notify nalert">
+																							</a>
+
+														<a href="/en/main/leaderboards-damage/" title="Weekly Leaderboards" class="notify newleaderboard ">
+							
+
+															</a>
+						</div>
+												<div class="user_level">
+															<b>92</b>
+														<div class="user_progress">
+																	<div class="progress_bar" style="width:42%"></div>
+															</div>
+						</div>
+						<div id="experienceTooltip" class="simple_yellow" style="display:none; width: 120px; position: absolute; top: 60px;">
+							<img src="http://s3.www.erepublik.net/images/modules/sidebar/yellow_arrow_tip.png" class="tip" alt="" />
+								Experience level: <strong>92</strong><br />
+								Experience points: <strong>337121</strong><br />
+								Next level at: <strong>340000</strong>
+						</div>
+											</div>
+										<div class="user_identity">
+						<a class="user_country" href="/en/country/society/Croatia">
+										<span class="empire_flag_deco smallest">
+														<img src="http://s2.www.erepublik.net/images/flags_png/S/Croatia.png" alt="" />
+														</span>
+													</a>
+						<a class="user_name" href="/en/citizen/profile/1234">
+							nick						</a>
+					</div>
+																				<div class="user_health">
+						<script type="text/javascript">
+							var reset_health_to_recover = 650;
+							var reset_has_food = 4;
+							var show_reset = true;
+							var new_date = '228';
+							globalNS.userInfo.wellness = 190;
+							globalNS.userInfo.specialFoodAmount = 1413;
+							globalNS.userInfo.specialFoodValue = 100;
+                            globalNS.userInfo.energyPerInterval = 10						</script>
+														<input type="hidden" value="1234567890" id="a69925ed4a6ac8d4b191ead1ab58e853">
+
+								<div class="health_bg">
+
+									<div class="health_bar full_width">
+										<img src="http://s1.www.erepublik.net/images/modules/sidebar/energy_bar_icon2.png" alt="" class="health_icon" />
+										<strong id="current_health">190 / 650</strong>
+										<div class="progress" id="health_bar_progress" style="width:29%">
+											<q></q>
+										</div>
+										<div class="back_progress" id="health_back_progress" style="width: 36.923076923077%"></div>
+									</div>
+									
+									                                    
+<script type="text/javascript" src="/js/jquery.zclip.js"></script>
+
+<script>
+
+	window.twttr = (function (d,s,id) {
+	 var t, js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+	js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+	return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+	}(document, "script", "twitter-wjs"));
+
+	function shareSuccess(jsonParam) {
+        $j.post('/en/main/invite-reward', {_token: $j('#_token').val()},
+                    function(data) {
+                        if(data.success) {
+                        	$j('#invite_step1').css("display", "none");
+                        	$j('.invite_friends_reward_pop').lightbox_me({'centered':true});
+                        }
+                    },
+                    'json'
+                );
+
+	}
+
+	function inviteFriends(platform) {
+
+        if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+            //track in ga
+            _gaq.push(['_trackEvent', 'CoreLoop', 'invite_'+platform]);
+        }
+
+		var url = 'http://www.erepublik.com/en/main/oauth2-callback/'+platform;
+
+		try {
+				var x = 600;
+				var y = 550;
+				switch(platform.toLowerCase()) {
+					case 'msn':
+						x += 350;
+						y += 50;
+					break;
+				}
+				getOauthContacts(url, "oauthInviteFriends", x, y);
+		}
+		catch(e){console.log(e);}
+	}
+
+	var oauthWindow = false;
+
+	function doInviteFriends(platform, get) {
+
+		var url = 'http://www.erepublik.com/en/main/oauth2-callback/'+platform;
+		oauthWindow.close();
+
+		var contacts = $j.get(url, get,
+		   function(data){
+
+				$j('#facebook_invite_container').html(data);
+				pop_up_rendered = true;
+		   });
+	}
+
+	function getOauthContacts(url, name, width, height) {
+			var isResizeAble = false;
+			var left = Math.round((screen.width - width) / 2);
+			var itop = Math.round((screen.height - height) / 2);
+			var styleStr = "";
+			styleStr += 'height=' + height+','+'width=' + width;
+			styleStr += 'toolbar=no,location=no,directories=no,status=no,menuBar=no,scrollbars=yes';
+			styleStr += ',resizable=' + (isResizeAble ? 'yes' : 'no');
+
+			styleStr += ',left=' + left + ',top=' + itop;
+			//styleStr += ',screenX=' + left + ',screenY=' + itop;
+			try {
+				var res = window.open(url, name, styleStr);
+				oauthWindow = res;
+				res.focus();
+				window.childW = res;
+			}
+			catch(e) {alert(e);}
+			return res;
+		}
+
+
+	$j(document).ready(function(){
+
+		$j('a.invite_friends,#gold_bonus_invite_friends, a.militaty_empire, .invite_anniversary_bonus, #inviteFriendsGoldBonus, .invite_friends_promo_20').click(function() {
+			$j('#invite_step1').lightbox_me({
+				centered: true,
+				overlayCSS: {background:'black', opacity: .7, zIndex: 9000},
+				onLoad: function() {
+
+					if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+						//track in ga
+						_gaq.push(['_trackEvent', 'CoreLoop', 'invite_start']);
+					}
+
+					setCopyButton = function() {
+						$j("#copy_link").zclip({
+							path:'http://www.erepublik.com/js/ZeroClipboard1.swf',
+							copy:$j('#personal_link').val(),
+							afterCopy:function(){
+                                if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+                                    //track in ga
+                                    _gaq.push(['_trackEvent', 'CoreLoop', 'clipboard_share']);
+                                }
+								$j('#personal_link').addClass("highlight");
+								setTimeout(function() {
+									$j('#personal_link').removeClass("highlight");
+								}, 1000);
+							}
+						});
+					}();
+
+					//window.setCopyButton();
+				}
+			});
+			return false;
+		});
+
+		$j('#share').click(function(){
+			//$j('#invite_step1').trigger('close');
+            if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+                //track in ga
+                _gaq.push(['_trackEvent', 'CoreLoop', 'facebook_share']);
+            }
+			$j('#invite_step1').css('display', 'none');
+			FB.ui(obj, callback);
+		});
+
+        $j('a.twitter-share-button').click(function(){
+            if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+                //track in ga
+                _gaq.push(['_trackEvent', 'CoreLoop', 'twitter_share']);
+            }
+        });
+
+        $j('#invite_step1 a.close').click(function(){
+            if(typeof erepublik.citizen.hasCoreLoopAccess != 'undefined' && erepublik.citizen.hasCoreLoopAccess == true){
+                //track in ga
+                _gaq.push(['_trackEvent', 'CoreLoop', 'invite_close']);
+            }
+        });
+        if(typeof twttr !== 'undefined') {
+        	twttr.ready(function(twttr) {
+        	    twttr.events.bind('tweet', function (event) {
+        	        shareSuccess();
+        	    });
+        	});
+        }
+
+		var obj = {
+		  method: 'feed',
+		  link: 'http://www.erepublik.com/en/referrer/nick',
+		  picture: 'http://www.erepublik.net/images/erepublik_logo.jpg',
+		  name: 'eRepublik',
+		  caption: 'Free Online Multiplayer Strategy Game',
+		  description: 'Join me in eRepublik and I will guide your steps into discovering your calling in the New World! Being a cunning politician, a fierce military commander or a media mogul!',
+		  display: 'popup'
+		};
+
+		var callback = function(response) {
+			$j('#invite_step1').css('display', 'block');
+			if (response && response.post_id) {
+				shareSuccess();
+			}
+			//$j('a.invite_friends, a.militaty_empire').trigger('click');
+		}
+	});
+</script>
+<div class="facebook_friends" id="invite_step1">
+	<a href="javascript:;" class="close" title="Close window"><span>Close</span></a>
+	<h2>Invite friends</h2>
+
+	
+	
+	
+	<div class="listing">
+		<span>Invite friends from your address books</span>
+		<a class="invite invite_yahoo" href="javascript:inviteFriends('yahoo');" title="Invite friends from Yahoo">Invite friends from Yahoo</a>
+		<a class="invite invite_gmail" href="javascript:inviteFriends('google');" title="Invite friends from Gmail">Invite friends from Gmail</a>
+		</div>
+
+		<div class="listing">
+		   <div id="fb-root"></div>
+		   <script src="//connect.facebook.net/en_US/all.js"></script>
+		   <script>
+			   window.fbAsyncInit = function() {
+				// init the FB JS SDK
+				FB.init({
+					appId: '300511377223',
+					status: true,
+					cookie: true,
+					xfbml: true,
+					channelUrl: 'http://www.erepublik.com/xd_receiver.htm'
+				});
+				// Additional initialization code such as adding Event Listeners goes here
+
+			   };
+
+			   (function(d, debug) {
+				var js, id = 'facebook-jssdk',
+					ref = d.getElementsByTagName('script')[0];
+				if (d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+				ref.parentNode.insertBefore(js, ref);
+			   }(document, /*debug*/ false));
+		   </script>
+			<span>Share your personal link</span>
+
+			<input type="text" value="http://www.erepublik.com/en/referrer/nick" class="" id="personal_link" name="personal_link" readonly="readonly" />
+			<a href="javascript:;" class="copy_clipboard" id="copy_link" title="Copy to clipboard">Copy to clipboard</a>
+
+			<ul class="social_btn">
+				<li>
+					<a href="javascript:;" id="share">Share</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.erepublik.com/en/referrer/nick" data-count="none">Tweet</a>
+				</li>
+			</ul>
+		</div>
+		</div>
+<!--<a href="javascript:;" id="bclick" style="margin-bottom:15px;display:block;">
+	<img src="http://s2.www.erepublik.net/images/modules/banners/cvote.jpg" alt="" />
+</a>-->
+<script>
+var pop_up_rendered = false;
+$j(document).ready(function(){
+	$j('#bclick').click(function(event){
+		 event.preventDefault();
+		FB.login(function(response){
+			if(response.status == 'connected') {
+
+				if(pop_up_rendered) {
+					openInvitePop();
+				} else {
+					$j.get('/en/main/facebook-get-friends', function(data){
+						$j('#facebook_invite_container').html(data);
+						pop_up_rendered = true;
+						openInvitePop();
+					});
+				}
+
+			}
+		}, {scope:'email'});
+	});
+});
+</script>
+<div id="facebook_invite_container">
+</div>
+
+
+								</div>
+
+								<a href="javascript:;" title="" class="eat_food_wide      reset" id="DailyConsumtionTrigger">
+									<img src="http://s2.www.erepublik.net/images/modules/sidebar/eating.gif" id="eatload" alt="" width="152" height="36"/>
+
+									<q><div>
+											<span>
+												<img alt="" class="warn" src="http://s3.www.erepublik.net/images/modules/_icons/swarning.png" />
+											</span>
+											<input type="hidden" id="eat_energy_text" value="Energy Bar" />
+											<input type="hidden" id="eat_food_text" value="Recover Energy" />
+											<input type="hidden" id="buy_food_text" value="Buy food" />
+											<strong id="foodText">Recover Energy</strong>
+									</div></q>
+								</a>
+
+								                                <p title="Recover 10 Energy every 6 minutes" class="recover_health boosted" id="foodResetHoursContainer" style="display: none;">Recover <strong>10</strong> more in <em id="foodResetHours">00:05:59</em></p>
+
+												<div id="eatFoodTooltip" class="simple_yellow" style="display:none; width: 250px; position: absolute; top: 80px;">
+							<input type="hidden" id="valid_for_energy_text" value="You will consume one Energy Bar to recover Energy. This does not affect the amount of Energy you can recover by eating food.">
+							<input type="hidden" id="valid_for_winter_treat_text" value="You will consume a Treat to recover Energy. This does not affect the amount of Energy you can recover by eating food.">
+							<input type="hidden" id="valid_for_food_text" value="This action recovers as much Energy as possible by consuming Food from your Storage.">
+							<input type="hidden" id="valid_for_buy_text" value="You have consumed all the food in your Storage. Buy more from the Marketplace to recover your Energy.">
+							<img src="http://s3.www.erepublik.net/images/modules/sidebar/yellow_arrow_tip.png" class="tip" alt="" />
+							<p>
+																This action recovers as much Energy as possible by consuming Food from your Storage.																							</p>
+
+														<p style="margin:0">
+								You can recover <big class="tooltip_health_limit">50</big> more Energy								<img class="mini_health" src="http://s3.www.erepublik.net/images/modules/_icons/mini_energy.png" alt="" />
+							</p>
+						</div>
+
+						<div id="wellnessTooltip" class="simple_yellow" style="display:none;width:250px; position: absolute; top: 35px;">
+							<img src="http://s3.www.erepublik.net/images/modules/sidebar/yellow_arrow_tip.png" class="tip" alt="" />
+							&bull;&nbsp;Working, training and fighting decreases your Energy<br />
+							&bull;&nbsp;Food, Energy Bars and First Aid Kits restore energy						</div>
+					</div>
+										
+				</div>
+								<div class="user_finances">
+					<div class="gold_amount">
+						<p>
+							<img src="http://s2.www.erepublik.net/images/modules/_icons/gold_icon.png" alt="Gold" />
+							<strong id="side_bar_gold_account_value">9999</strong>&nbsp;<span>Gold</span>
+						</p>
+											</div>
+					<div class="currency_amount">
+						 <p>
+							<img src="http://s3.www.erepublik.net/images/flags_png/S/Brazil.png" alt="BRL" title="BRL" />
+							<strong id="side_bar_currency_account_value">46,483</strong>&nbsp;<span>BRL</span>
+						 </p>
+					</div>
+				</div>
+																		<div class="award_pop_up">
+			<input type="hidden" name="_token" value="1234567890" id="award_token" />
+</div>
+<script type="text/javascript">
+$j(document).ready(function() {
+	$j('.reward_pop_box div, .popup_reward_image').tipsy({
+		gravity: 's',
+		html: true
+	});
+	$j('.reward_pop_box .custom_reward_tooltip').tipsy({
+		gravity: 's',
+		html: true,
+		title: function() {
+			return $j(this).find('.reward_tooltip').html();
+		}
+	});
+});
+</script>
+								<div id="award_pop_up_ajax">
+				</div>
+				<div class="user_notify">
+									</div>
+								
+				
+				
+				<div id="limit_health_pop" class="health_limit energ_limit">
+					<h2>Get more energy!</h2>
+					<p>
+						You have reached your food consumption limit.<br />
+						You can recover 10 energy every 6 minutes.					</p>
+					<div class="time_left">
+						<small>Recover <strong>10</strong> more in</small>
+						<em id="pop_timer">00:00:00</em>
+					</div>
+					<a href="/en/get-gold/health" class="get_health_text energy_bar" title="Buy Energy Bars"><span>Buy Energy Bars</span></a>
+					<a href="javascript:;" class="green_go" id="close_limit_health">Close</a>
+				</div>
+				
+
+
+
+		<script type="text/javascript">
+			function sidebar_tooltip(trigger, tooltip){
+				$j(trigger).hover(
+					function() { $j(tooltip).css({ display: "block" }); },
+					function() { $j(tooltip).css({ display: "none" }); }
+				);
+			}
+			$j(document).ready(function() {
+					sidebar_tooltip("#current_health", "#wellnessTooltip");
+					sidebar_tooltip(".user_progress", "#experienceTooltip");
+					sidebar_tooltip("#DailyConsumtionTrigger", "#eatFoodTooltip");
+			});
+						linkForBuy = '/en/economy/market/63/1';
+			textForBuy = "Buy food";
+			food_remaining = parseInt("50", 10);
+			var smallestFood = {"q":"1","use":2};
+					</script>
+
+
+		<script type="text/javascript">
+			var upgrade_town_hall_url = 'http://www.erepublik.com/en/main/upgrade-town-hall';
+		</script>
+
+		
+		<input type="hidden" id="has_bonus_buildings" name="has_bonus_buildings" value="2">
+	
+		
+
+
+			</div>
+	<!-- end sidebar container -->
+
+	<!-- </div> -->
+	<!-- end sidebar -->
+	
+	<div class="sidebar_banners_area">
+		
+		        
+                    
+				<!-- <a href="javascript:;" title="" id="brazilian_sabotage_2014_missions" class="brazilian_sabotage_2014">
+			<i>Mission progress</i>
+			<em>Time left:</em>
+			<b>00:00:00</b>
+		</a> -->
+
+		<script type="text/javascript">
+		// 	$j(document).ready(function() {
+		// 		$j('#brazilian_sabotage_2014_missions').click(function(){
+		// 			$j('.brazilian_sabotage_2014_path').lightbox_me({
+		// 				centered: true,
+		// 				closeClick: false,
+		// 				closeEsc: false
+		// 			});
+		// 		});
+
+		// 		$j('.brazilian_sabotage_2014 b').countdown({until: '-6190716', format: 'HMS', compact: true, description: ''});
+		// 	});
+		</script>
+				
+		
+		
+		<script type="text/javascript" src="http://www.erepublik.com/js/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="http://www.erepublik.com/js/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="http://www.erepublik.com/js/jquery.dd3.min.js"></script>
+<link rel="stylesheet" href="http://www.erepublik.net/css/cmp/jquery.mCustomScrollbar.css" type="text/css" />
+
+<div id="promoPopupHolder" style="display:none;">
+    <a href="javascript:;" class="close_action close" title="Close window">
+        <img src="http://s2.www.erepublik.net/images/modules/pvp/close_button.png" alt="" />
+    </a>
+</div>
+
+<script type="text/javascript">
+var erepublik = erepublik || {};
+$j.extend(erepublik.i18n, obj = {
+	donateToFriend: {
+		close:								"Close",
+		write_message:						"Add a message",
+		hide_save:							"Hide&Save",
+		gift_amount_unavailable:			"Amount unavailable!",
+		receiver_must_not_be_sender:		"You cannot donate to yourself!",
+		warning_transaction_in_progress:	"<em>This item may be unavailable!</em>\n Another player has started purchasing this item just before you did.\n Your friend can only receive this item once, so your purchase could be converted in a regular 25 Gold Pack. \n We advise you to try again later or send him another gift."
+	}
+});
+
+promoPopup = {
+    selectedPack: false,
+    packWithPayments : ['blankPack','starterPack', 'stashPack', 'assaultPack', 'powerPack', 'economyPack', 'giftsPack', 'goldPack'],
+    renderPopup: function(pack, returnTo, friend){
+        var goBackUrlRel = false;
+        var callUrl = '/' + erepublik.settings.culture;
+        this.selectedPack = pack;
+
+        switch (pack){
+            case 'starterPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=starter_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'assaultPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=assault_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'economyPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=economy_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'stashPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=stash_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'giftsPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=gifts_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'goldPack':
+                callUrl = "/" + erepublik.settings.culture + "/get-gold/gold?";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'powerPack':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=power_pack";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'ncGoldRush':
+                callUrl = "/" + erepublik.settings.culture + "/main/promo-packs/?pack=nc_gold_rush";
+                goBackUrlRel =  'buyForFriend';
+            break;
+            case 'forFriendPopup':
+                callUrl = "/" + erepublik.settings.culture + "/main/buy-forfriend?to_citizen_id=" + friend;
+            break;
+        }
+
+        var contentLabel = pack;
+        $j("#promoPopupHolder").trigger('close');
+
+        if ( parseInt(friend,10) && friend > 0 && pack !== 'forFriendPopup' ) {
+            callUrl += '&to_citizen_id=' + friend;
+            contentLabel = pack + 'Friend';
+            $j("#promoPopupHolder").removeClass().addClass('gifts_popup');
+        }
+
+        $j.ajax({
+            type: "GET",
+            beforeSend: function(pack) {
+                var head= document.getElementsByTagName('head')[0];
+                if (promoPopup.selectedPack == 'goldPack'){
+                    var script3= document.createElement('script');
+                    script3.type= 'text/javascript';
+                    script3.src= '/js/buy/buy.js';
+                    head.appendChild(script3);
+                }
+
+	            if ($j.inArray(promoPopup.selectedPack, promoPopup.packWithPayments)) {
+
+	                var script= document.createElement('script');
+	                script.type= 'text/javascript';
+	                script.src= 'https://www.paypalobjects.com/js/external/dg.js';
+	                head.appendChild(script);
+
+	                var script2= document.createElement('script');
+	                script2.type= 'text/javascript';
+	                script2.src= 'http://static.pbc.com/js/ultimatepay-api.js';
+	                head.appendChild(script2);
+
+
+	            }
+            },
+            url: callUrl
+            })
+            .done(function( msg ) {
+	            setTimeout(function(){
+                    ulp.doPMBindings()
+	                if(!$j("#promoPopupHolder").data('content') || $j("#promoPopupHolder").data('content') != contentLabel ) {
+	                    $j("#promoPopupHolder").html(msg);
+	                    $j("#promoPopupHolder").data('content', contentLabel );
+	                }
+
+	                if( goBackUrlRel ) {
+	                    $j("#goBackPromo").attr('rel', goBackUrlRel);
+	                    $j("#goBackPromo").attr('data-id', friend);
+	                }
+
+	                $j("#promoPopupHolder").lightbox_me({
+	                    centered: true,
+	                    closeClick: false,
+	                    closeEsc: true,
+                        onClose: function(){ $j("#promoPopupHolder").data('content', 'none') }
+                        // destroyOnClose: true
+	                });
+            },150);
+        });
+    }
+}
+
+	//new general popups
+	generalPopup = {
+
+	    renderPopup: function(generalPopupName){
+	        var callUrl = '/' + erepublik.settings.culture;
+	        switch (generalPopupName) {
+	            case 'ncGoldRush':
+	                callUrl = "/" + erepublik.settings.culture + "/main/citizenship-banner";
+	            break;
+	        }
+
+	        var contentLabel = 'banner';
+	        $j("#promoPopupHolder").trigger('close');
+
+	        $j.ajax({
+	            type: "GET",
+	            url: callUrl
+	            })
+	            .done(function( msg ) {
+		            setTimeout(function(){
+		                if(!$j("#promoPopupHolder").data('content') || $j("#promoPopupHolder").data('content') != contentLabel ) {
+		                    $j("#promoPopupHolder").html(msg);
+		                    $j("#promoPopupHolder").data('content', contentLabel );
+		                }
+
+		                 $j("#promoPopupHolder").lightbox_me({
+		                    centered: true,
+		                    closeClick: false,
+		                    closeEsc: true
+		                });
+		            },150);
+	        });
+	    }
+	}
+	//end new general popups
+
+$j(document).ready(function() {
+	var friend, pack, returnTo, generalPopupName;
+
+	// buy gold from fight page
+	$j('#get_gold_btn').live('click', function() {
+		friend = 0;
+        pack = 'goldPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+	});
+
+    $j('#pop_starter_pack').click(function(){
+        friend = 0;
+        pack = 'starterPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+    });
+
+    $j('#pop_stash_pack').click(function(){
+        friend = 0;
+        pack = 'stashPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+    });
+
+    $j('#pop_assault_pack').click(function(){
+        friend = 0;
+        pack = 'assaultPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+    });
+
+    $j('#pop_economy_pack').click(function(){
+        friend = 0;
+        pack = 'economyPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+    });
+
+    $j('#pop_power_pack').click(function(){
+        friend = 0;
+        pack = 'powerPack';
+        returnTo = false;
+        $j("#promoPopupHolder").removeClass();
+        promoPopup.renderPopup(pack, returnTo, friend);
+    });
+
+	$j('#donate_to_friend').click(function(){
+		friend = $j(this).attr('data-id');
+		pack = 'forFriendPopup';
+		returnTo = false;
+		$j("#promoPopupHolder").removeClass().addClass('allPackPopup');
+		promoPopup.renderPopup(pack, returnTo, friend);
+	});
+
+	$j('#nc_gold_rush_banner').click(function(){
+		generalPopupName = 'ncGoldRush';
+		generalPopup.renderPopup(generalPopupName);
+	});
+
+    $j('#goBackPromo').live('click', function() {
+        var toContent = $j(this).attr('rel');
+        var friendId = $j(this).attr('data-id');
+		switch (toContent) {
+			case 'buyForFriend':
+				toUrl = "/" + erepublik.settings.culture + "/main/buy-forfriend?to_citizen_id=" + friendId;
+				break;
+			default:
+				break;
+		}
+
+         $j.ajax({
+			type: "GET",
+			url:  toUrl
+            })
+            .done(function( msg ) {
+                setTimeout(function(){
+                    if(!$j("#promoPopupHolder").data('content') || $j("#promoPopupHolder").data('content') != toContent  ) {
+                        $j("#promoPopupHolder").html(msg);
+                        $j("#promoPopupHolder").data('content', toContent);
+                    }
+
+                    $j("#promoPopupHolder").removeClass().addClass('allPackPopup');
+
+                    $j("#promoPopupHolder").lightbox_me({
+                        centered: true,
+                        closeClick: false,
+                        closeEsc: true
+                    });
+                },150);
+
+              });
+    });
+
+});
+</script>
+				<script type="text/javascript">
+		$j('.mission_new_path_sidebar b').countdown({until: 0, format: 'HMS', compact: true, description: ''});
+	</script>
+
+		
+    
+    
+    
+        
+	
+		    	
+
+	
+		
+	
+	
+	
+		<a class="invite_anniversary_bonus" href="javascript:;" title="Invite friends and earn a 10% bonus from all the Gold they get in eRepublik."></a>
+			
+	
+	
+	</div>
+</div>
+<!-- end large_sidebar -->
+</div>
+<!-- end sidebar_wrapper -->
+<div id="content" class="">
+
+
+<div class="mission_path_pop halloween_2014_path">
+	<div class="user_story_area" id="user_story_area">
+		<img src="http://s2.www.erepublik.net/images/modules/_icons/small_info_icon.png" />
+		<div>
+			<p>
+				<strong>Briefing:</strong>
+				A new kind of threat has been detected, as Lana and her surveillance team has spotted Dracula moving in the outskirts of the New World. The threat is imminent and YOU will embark on a dangerous journey. Find Dracula, force him back to his tomb and return peace and balance to the New World!			</p>
+		</div>
+	</div>
+	<span id="text_active" style="display: none;">Complete it until time expires</span>
+	<span id="text_completed" style="display: none;">Completed</span>
+	<a class="close" href="javascript:;" title=""></a>
+	<div class="countdown">
+		<em>Time left:</em>
+		<b>00:00:00</b>
+	</div>
+	<p class="content_title">Mission progress</p>
+	<div class="mission_path">
+		<div class="path_bg"></div>
+		<ul class="mission_icons">
+			<li data-mission-id="356" class="holder_1_1"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="357" class="holder_1_2"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="358" class="holder_1_3"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="359" class="holder_1_4"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="360" class="holder_2_1"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="361" class="holder_2_2"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="362" class="holder_2_3"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="363" class="holder_2_4"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="364" class="holder_3_1"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="365" class="holder_3_2"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="366" class="holder_3_3"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="367" class="holder_3_4"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="368" class="holder_4"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+			<li data-mission-id="369" class="holder_5"><span></span>
+				<em class="tooltip">
+					<q class="mission_path_tooltip">
+						<b style="display:block;margin-bottom:3px"></b>
+						<i style="font-style:normal;color:#ff7474;">Locked</i>
+					</q>
+				</em>
+			</li>
+		</ul>
+		<div class="path_1_1"></div>
+		<div class="path_1_2"></div>
+		<div class="path_1_3"></div>
+		<div class="path_1_4"></div>
+		<div class="path_2_1"></div>
+		<div class="path_2_2"></div>
+		<div class="path_2_3"></div>
+		<div class="path_2_4"></div>
+		<div class="path_3_1"></div>
+		<div class="path_3_2"></div>
+		<div class="path_3_3"></div>
+		<div class="path_3_4"></div>
+		<div class="path_connector"></div>
+		<div class="path_last"></div>
+		<div class="path_5"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$j('.countdown b').countdown({until: -6190716, format: 'HMS', compact: true, description: ''});
+	$j('.mission_icons li').tipsy({
+		gravity: 's',
+		html: true,
+		title: function() { return $j(this).find(".tooltip").html() }
+	})
+
+	$j('.cupid_2014_path .hasCountdown span').countdown({until: '-6190716', format: 'HMS', compact: true, description: ''});
+</script>
+
+<script type="text/javascript">
+	$j('.invite_anniversary_bonus, .tactical_heroes_notification, .invite_friends_promo_20').tipsy({
+		gravity: 'n'
+	})
+	$j('.mission_new_path_sidebar').click(function(){
+		$j('.mission_path_pop').lightbox_me({
+			centered: true
+		});
+	});
+</script>
+
+
+	<div id="pubnub" pub-key="pub-c-b8690376-f0ef-4228-9e0c-8a1ca6ed7bba" sub-key="sub-c-ee53c2ae-84a1-11e1-941d-0da3ff7904e6" uuid="1234"></div>
+
+	<script type="text/javascript">
+		var erpkChat =new Object();
+		erpkChat.citizenId = 1234;
+		erpkChat.isMentor = 0;
+		erpkChat.chatStatus = 1;
+		erpkChat.chatDataFeedStatus = 1;
+	</script>
+
+	<link type="text/css" href="/cometchat/cometchatcss.php" rel="stylesheet" media="screen" />
+	<script type="text/javascript" src="/cometchat/cometchatjs.php" charset="utf-8"></script>
+	<script type="text/javascript">
+
+						erpkChat.roomId = 60;
+		erpkChat.roomName = 'VGVycmEgQnJhc2lsaXM=';
+		erpkChat.inviteId = 'd41d8cd98f00b204e9800998ecf8427e';
+		
+		
+
+		var onlineUsersTimer = setInterval(hideUserList, 500);
+
+		function hideUserList(){
+			if ( $j('#cometchat_userstab').length > 0 ){
+				$j('#cometchat_userstab').remove()
+				clearInterval(onlineUsersTimer);
+			}
+		}
+			</script>
+
+<h1 class="goleft">Messages</h1>
+<ul class="tabs">
+	<li id="topratedtab"><a class="on" href="/en/main/messages-inbox"><span>Messages</span></a></li>
+	<li class="last" id="latesttab"><a href="/en/main/messages-alerts/1"><span>Alerts</span></a></li>
+</ul>
+	<a href="/en/main/messages-compose/0" class="right fluid_blue_light_medium message_get"><span class="bold"><span class="envelope">New Message</span></span></a>
+<div class="message_ajax_container">
+
+
+	<div class="holder top_border">
+	<input type="hidden" name="nonAdultMessage" id="nonAdultMessage" value="You cannot send another message in the next %%1%% %%2%%" />
+		<div class="msg_title_container">
+			<h3>New Message</h3>
+		</div>
+		<div class="message_item_container form compose">
+			<div class="avatarholder">
+				<img width="35" height="35" alt="nick"
+					 src="http://avatar.url"/>
+			</div>
+			<div class="message_container blue">
+				<div class="coloured">
+										<form id="message_form" method="post"
+						  action="/en/main/messages-compose/2808593">
+						<input type="hidden" id="_token" name="_token" value="1234567890"/>
+						<label for="citizen_name">To  </label>						<input type="text" class="text padded ac_input" value="" id="citizen_name" name="citizen_name"
+							   autocomplete="off">
+												<label for="citizen_subject">Subject</label>
+						<input type="text" class="text padded ac_input" value=""
+							   id="citizen_subject" name="citizen_subject" autocomplete="off">
+												<label for="citizen_message">Message</label>
+						<textarea class="textarea padded" maxlength="2000" id="citizen_message"
+								  name="citizen_message" data-widearea="enable"></textarea>
+						<small id="chars_remaining">2000 characters left</small>
+																		<a href="#" class="fluid_blue_dark_medium message_submit"><span
+								class="bold">Send</span></a>
+					</form>
+					<div id="sending_message_indicator">Sending your message</div>
+									</div>
+				<div class="left_arrow"></div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var text_chars_left = "characters left";
+		$j(document).ready(function() {
+
+			$j('textarea[maxlength]').limitMaxlength({
+				onEdit: onEditCallback,
+				onLimit: onLimitCallback
+			});
+
+			onEditCallback(2000);
+			var href = window.location.href;
+			if (href.indexOf('#') > 0) {
+				window.location = href.substr(0, href.indexOf('#'));
+			}
+
+			var added_recipients = 0;
+
+			$j("#citizen_name").tokenInput([{"id":"1","name":"1"},{"id":"2","name":"2"},{"id":"3","name":"3"}], {
+								prePopulate: [{"id":"4","name":"nick"}],
+				composeDisabled: true,
+				canDeleteTokens: false,
+				tokenLimit: 1,
+								minChars: 2,
+				preventDuplicates: true,
+				hintText: 'Please type in the name of one of your friends',
+				classes: {
+					tokenList: "token-input-list-erpk",
+					token: "token-input-token-erpk",
+					tokenDelete: "token-input-delete-token-erpk",
+					selectedToken: "token-input-selected-token-erpk",
+					highlightedToken: "token-input-highlighted-token-erpk",
+					dropdown: "token-input-dropdown-erpk",
+					dropdownItem: "token-input-dropdown-item-erpk",
+					dropdownItem2: "token-input-dropdown-item2-erpk",
+					selectedDropdownItem: "token-input-selected-dropdown-item-erpk",
+					inputToken: "token-input-input-token-erpk"
+				},
+				onAdd: function(item) {
+					added_recipients += 1;
+					$j('span#count_recipients').html((30 - added_recipients) + ' of 30 left');
+				},
+				onDelete: function(item) {
+					added_recipients -= 1;
+					$j('span#count_recipients').html((30 - added_recipients) + ' of 30 left');
+				}
+			});
+
+
+			wideArea();
+
+
+
+		});
+
+	</script>
+
+</div>
+			</div>
+
+		<div id="footer" >
+                            <p>
+				
+		<a href="/en/main/ga_track/wiki" target="_blank">Wiki</a> &nbsp; | &nbsp;
+		<a href="/en/main/ga_track/latest-updates" target="_blank">Latest Updates  </a> &nbsp; | &nbsp;
+		<a href="/en/main/ga_track/blog" target="_blank">Blog</a> &nbsp; | &nbsp;
+		<a href="/en/main/ga_track/contact" rel="nofollow" target="_blank">Contact</a> &nbsp; | &nbsp;
+		<a href="/en/main/ga_track/jobs" rel="nofollow" target="_blank">Jobs</a> &nbsp; | &nbsp;
+
+		<a href="/en/main/ga_track/terms" rel="nofollow" target="_blank">Terms of Service</a> &nbsp; | &nbsp;
+		<a href="/en/main/ga_track/privacy" rel="nofollow" target="_blank">Privacy</a>&nbsp; | &nbsp;
+		<a href="/en/main/ga_track/rules" rel="nofollow" target="_blank">eRepublik Laws</a>
+
+
+				 		&nbsp; | &nbsp; <a href="/en/badges">Badges</a>
+		
+					&nbsp; | &nbsp; <a href="http://forum.erepublik.com/" target="_blank">Forum</a>
+				
+
+		</p>
+		<p class="follow">Follow us:            <a href="http://www.facebook.com/pages/Erepublik/26897053321?ref=ts" title="Facebook" target="_blank"><img alt="Facebook" src="http://s3.www.erepublik.net/images/parts/facebook_small_icon.png" title="Facebook" />Facebook</a>
+            <a href="http://www.twitter.com/erepublik" title="Twitter" target="_blank"><img alt="Twitter" src="http://s2.www.erepublik.net/images/parts/twitter_small_icon.png" title="Twitter" />Twitter</a>
+            <a href="http://www.youtube.com/officialerepublik" title="Youtube" target="_blank"><img alt="Youtube" src="http://s2.www.erepublik.net/images/parts/youtube_icon.png" title="Youtube" />Youtube</a>
+            <a href="http://www.erepublik.com/en/main/news/rated/all/all/1/rss" class="rss_footer">Articles</a>
+                </p>
+	<p>Copyright &copy; 2007-2015&nbsp;eRepublik</p>
+</div>
+			</div>
+
+
+
+
+<script type="text/javascript">
+
+		function switchToMobileVersion()
+		{
+			$j.cookie('prefer_full_site', 'false', {
+				expires: 14, path: '/', domain: erepublik.settings.domainname
+			});
+			window.location = "http://m.erepublik.com/en/main/messages-compose/2808593";
+		}
+</script>
+		<script type="text/javascript" language="Javascript" charset="utf-8">
+			erepublik.functions.liveClock("live_time",15,37);
+		</script>
+
+<!-- Correct fb_xd_fragment Bug Start -->
+<script type="text/javascript">
+document.getElementsByTagName('html')[0].style.display='block';
+</script>
+<!-- Correct fb_xd_fragment Bug End -->
+
+<div id="f_l_c"></div>
+
+ <script type="text/javascript">
+    var flc = new SWFObject("/flash/cookie.swf", "f_l_c", "1", "1", "9", "#ffffff");
+    flc.addParam("wmode", "transparent");
+    flc.addVariable("token","1234567890");
+    flc.addVariable("citizen_id","1234");
+    flc.write("f_l_c");
+  </script>
+
+<div id="shortcut_list" class="shortcuts">
+	<h3>List of eRepublik shortcuts</h3>
+	<ul>
+		<li>
+			<strong>Alerts</strong>
+			<em>Shift + A</em>
+		</li>
+		<li>
+			<strong>Military campaigns</strong>
+			<em>Shift + C</em>
+		</li>
+		<li>
+			<strong>Military unit</strong>
+			<em>Shift + M</em>
+		</li>
+		<li>
+			<strong>My places</strong>
+			<em>Shift + L</em>
+		</li>
+		<li>
+			<strong>New Message</strong>
+			<em>Shift + N</em>
+		</li>
+		<li>
+			<strong>Storage</strong>
+			<em>Shift + S</em>
+		</li>
+		<li>
+			<strong>Top news</strong>
+			<em>Shift + T</em>
+		</li>
+		<li>
+			<strong>World map</strong>
+			<em>Shift + W</em>
+		</li>
+	</ul>
+	<em>(press ESC to close)</em>
+</div>
+<div id="div_b" style="display:block;padding:10px;position:absolute;top: 20%;left: 50%; margin-top: 0px; margin-left: -351px;z-index: 99999"></div>
+<script type="text/javascript">
+   var _mfq = _mfq || [];
+   (function() {
+       var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+       mf.src = "//cdn.mouseflow.com/projects/554ddefc-3f27-4718-a64f-85e06cf90558.js";
+       document.getElementsByTagName("head")[0].appendChild(mf);
+   })();
+</script>
+</body>
+</html>
