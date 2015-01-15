@@ -3,6 +3,7 @@ package com.marcelofs.jackson.persistence.data;
 import java.io.Serializable;
 
 import javax.jdo.annotations.Extension;
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -16,7 +17,7 @@ public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@PrimaryKey
-	@Persistent
+	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
 
 	@Persistent

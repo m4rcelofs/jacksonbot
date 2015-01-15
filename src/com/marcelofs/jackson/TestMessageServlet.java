@@ -33,7 +33,7 @@ public class TestMessageServlet extends HttpServlet {
 	}
 
 	private void addToQueue(String id) {
-		DeferredTask task = new MessageUserTask(id);
+		DeferredTask task = new MessageUserTask(id, false);
 		Queue queue = QueueFactory.getQueue("erepublik-logged-in");
 		TaskOptions taskOptions = withPayload(task).taskName(
 				"TestMessageTask_" + id + "_" + new Random().nextInt(100));
