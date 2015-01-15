@@ -32,9 +32,15 @@ public class GetNewUsersTask implements DeferredTask {
 
 	private static final long serialVersionUID = 1L;
 	private final String date;
+	private final boolean sendMessage;
 
 	public GetNewUsersTask(String date) {
+		this(date, true);
+	}
+
+	public GetNewUsersTask(String date, boolean sendMessage) {
 		this.date = date;
+		this.sendMessage = sendMessage;
 	}
 
 	@Override
@@ -43,9 +49,10 @@ public class GetNewUsersTask implements DeferredTask {
 			HttpEntity response = doPost(date);
 			String[] ids = parseResponse(IOUtils
 					.toString(response.getContent()));
-			for (String id : ids)
-				if (id != null && !id.trim().isEmpty())
-					addToQueue(id.trim());
+			if (sendMessage)
+				for (String id : ids)
+					if (id != null && !id.trim().isEmpty())
+						addToQueue(id.trim());
 			registerDay(ids);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
