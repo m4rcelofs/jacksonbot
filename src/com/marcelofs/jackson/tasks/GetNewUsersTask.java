@@ -24,6 +24,9 @@ import com.google.appengine.api.taskqueue.DeferredTask;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.taskqueue.TaskOptions;
+import com.marcelofs.jackson.persistence.CloseablePM;
+import com.marcelofs.jackson.persistence.PMF;
+import com.marcelofs.jackson.persistence.dao.NewUsersDays;
 
 public class GetNewUsersTask implements DeferredTask {
 
@@ -43,6 +46,7 @@ public class GetNewUsersTask implements DeferredTask {
 			for (String id : ids)
 				if (id != null && !id.trim().isEmpty())
 					addToQueue(id.trim());
+			registerDay(ids);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -84,5 +88,12 @@ public class GetNewUsersTask implements DeferredTask {
 		TaskOptions taskOptions = withPayload(task).taskName(
 				"MessageUserTask_" + id);
 		queue.addAsync(taskOptions);
+	}
+
+	private void registerDay(String[] ids) {
+		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
+			NewUsersDays dao = new NewUsersDays(pm);
+			dao.add(date, ids);
+		}
 	}
 }

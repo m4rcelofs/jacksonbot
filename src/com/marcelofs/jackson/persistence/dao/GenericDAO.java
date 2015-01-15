@@ -1,6 +1,7 @@
 package com.marcelofs.jackson.persistence.dao;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -17,6 +18,12 @@ public class GenericDAO<T> {
 
 	protected PersistenceManager pm() {
 		return pm;
+	}
+
+	protected Query newQuery(String filter) {
+		Query q = pm.newQuery(type.getClass());
+		q.setFilter(filter);
+		return q;
 	}
 
 	public void add(T t) {

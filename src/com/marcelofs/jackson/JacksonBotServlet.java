@@ -40,7 +40,7 @@ public class JacksonBotServlet extends HttpServlet {
 			Boolean enabled = new Configs(pm).getDefault().getEnabled();
 			if (enabled != null && enabled) {
 				LocalDate date = new LocalDate(eRepTimeZone).minus(Days.ONE);
-				addToQueue(date.toString("yy-MM-dd"));
+				addToQueue(date.toString("yyyy-MM-dd"));
 			}
 		}
 	}
