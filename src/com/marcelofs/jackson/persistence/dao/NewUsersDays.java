@@ -1,7 +1,6 @@
 package com.marcelofs.jackson.persistence.dao;
 
-import static java.util.Arrays.asList;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -18,7 +17,10 @@ public class NewUsersDays extends GenericDAO<NewUsersDay> {
 
 	public void add(String date, String[] ids) {
 		NewUsersDay users = new NewUsersDay();
-		users.setNewUsers(asList(ids));
+		List<String> trimmedIds = new ArrayList<String>(ids.length);
+		for (String id : ids)
+			trimmedIds.add(id.trim());
+		users.setNewUsers(trimmedIds);
 		users.setDay(toKey(date));
 		add(users);
 	}
