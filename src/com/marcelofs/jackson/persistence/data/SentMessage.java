@@ -3,6 +3,7 @@ package com.marcelofs.jackson.persistence.data;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -22,9 +23,11 @@ public class SentMessage implements Serializable {
 
 	@Unowned
 	@Persistent
+	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private Message message;
 
 	@Persistent
+	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private Date when;
 
 	public Key getToUserID() {
