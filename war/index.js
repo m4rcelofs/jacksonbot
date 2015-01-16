@@ -3,7 +3,8 @@ var chartOptions =  {
             zoomType: 'x'
         },
         credits: {
-        	enabled: false
+        	text: 'thanks to ereptools.tk',
+        	href: 'http://ereptools.tk/'
         },
         title: {
             text: 'Novos jogadores no eBrasil'
