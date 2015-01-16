@@ -3,6 +3,7 @@ package com.marcelofs.jackson.persistence.data;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -24,6 +25,7 @@ public class NewUsersDay implements Serializable, JSONAware {
 	private Key day;
 
 	@Persistent
+	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private List<String> newUsers;
 
 	public Key getDay() {
