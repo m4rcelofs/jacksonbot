@@ -19,7 +19,8 @@ public class NewUsersDays extends GenericDAO<NewUsersDay> {
 		NewUsersDay users = new NewUsersDay();
 		List<String> trimmedIds = new ArrayList<String>(ids.length);
 		for (String id : ids)
-			trimmedIds.add(id.trim());
+			if (!id.trim().isEmpty())
+				trimmedIds.add(id.trim());
 		users.setNewUsers(trimmedIds);
 		users.setDay(toKey(date));
 		add(users);
