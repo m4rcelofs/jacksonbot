@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="jacksonApp">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +63,7 @@
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
 </head>
-<body>
+<body ng-controller="JacksonCtrl">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -73,11 +73,13 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<p class="navbar-text">Correndo atrás dos novinhos do eBR</p>
 
-				<form id="dateForm" class="navbar-form navbar-right" role="search">
+				<form class="navbar-form navbar-right" role="search"
+					ng-submit="search()">
 					<div class="form-group">
-						<input id="date" type="date" class="form-control" min="2013-05-28" placeholder="aaaa-MM-dd">
+						<input type="date" class="form-control" min="2013-05-28" max="9999-12-30"
+							placeholder="aaaa-MM-dd" ng-model="loadDate">
 					</div>
-					<button type="submit" class="btn btn-default">
+					<button type="submit" class="btn btn-default" title="{{ chartOpts.series[0].data.length }} dias carregados">
 						<span class="glyphicon glyphicon-search"> </span>
 					</button>
 				</form>
@@ -85,7 +87,13 @@
 		</div>
 	</nav>
 	<div class="container">
-		<div id="chart"></div>
+		<noscript>
+			<div class="alert alert-danger text-center" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign"></span> O
+				JavaScript está desativado ):
+			</div>
+		</noscript>
+		<highchart id="chart" config="chartOpts"></highchart>
 	</div>
 
 	<div class="modal fade" id="newUsers" tabindex="-1" role="dialog"
@@ -97,13 +105,17 @@
 						aria-label="Fechar">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="newUsersLabel">
-						<span id="selectedLength"></span> novos jogadores no dia <span
-							id="selectedDay"></span>
-					</h4>
+					<h4 class="modal-title">{{ selectedNewPlayers.length }} novos
+						jogadores no dia {{ selectedDay }}</h4>
 				</div>
 				<div class="modal-body">
-					<div class="row" id="userIdsRow"></div>
+					<div class="row">
+						<div class="col-md-2" ng-repeat="player in selectedNewPlayers">
+							<a id="a_{{player}}" target="_blank" ng-click="toErep()"
+								ng-href="http://www.erepublik.com/en/citizen/profile/{{player}}">{{
+								player }}</a>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -113,7 +125,16 @@
 	</div>
 
 	<script
-		src="//cdn.jsdelivr.net/g/jquery,bootstrap,highcharts(highcharts.js+modules/exporting.js+modules/no-data-to-display.js)"></script>
-	<script src="index.all.closure.js"></script>
+		src="//cdn.jsdelivr.net/g/jquery,
+									bootstrap,
+									angularjs(angular.min.js+angular-resource.min.js),
+									highcharts(highcharts.js+modules/exporting.js+modules/no-data-to-display.js)
+			"></script>
+	<!-- 	<script src="index.all.closure.js"></script> -->
+	<script src="/lib/highcharts-ng.min.js"></script>
+	<script src="/js/chartOptions.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/controllers.js"></script>
+	<script src="/js/services.js"></script>
 </body>
 </html>
