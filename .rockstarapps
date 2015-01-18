@@ -17,6 +17,7 @@
         <removeLogs>false</removeLogs>
         <oldFileNames>false</oldFileNames>
         <dependencies>
+        	<file>war/js/app.js</file>
             <file>war/js/lib/ga.js</file>
             <file>war/js/lib/highcharts-ng.min.js</file>
             <file>war/js/lib/ngStorage.min.js</file>
@@ -26,7 +27,6 @@
             <file>war/js/services/Modal.js</file>
             <file>war/js/services/Util.js</file>
             <file>war/js/controllers/JacksonCtrl.js</file>
-            <file>war/js/app.js</file>
         </dependencies>
         <properties/>
     </file>
