@@ -1,4 +1,6 @@
-angular.module('jacksonServices').factory('Jackson',
-		[ '$resource', function($resource) {
-			return $resource('get');
-		} ]);
+angular.module('jacksonServices').factory('Jackson', 
+	[ '$resource', function($resource) {
+		return {
+			users : $resource('get')
+		};
+} ]);

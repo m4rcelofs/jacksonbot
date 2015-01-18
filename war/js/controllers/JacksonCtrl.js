@@ -45,7 +45,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 			$scope.load = function() {
 				JacksonChart.loading = true;
 				var param = Util.dateToString($scope.loadDate);
-				Jackson.query({
+				Jackson.users.query({
 					from : param
 				}, loadCallback);
 			};
