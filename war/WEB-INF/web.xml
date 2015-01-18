@@ -14,6 +14,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/get</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>APIKeyServlet</servlet-name>
+		<servlet-class>com.marcelofs.jackson.APIKeyServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>APIKeyServlet</servlet-name>
+		<url-pattern>/api</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>JacksonBot</servlet-name>
@@ -22,15 +30,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>JacksonBot</servlet-name>
 		<url-pattern>/admin/start</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>InstallServlet</servlet-name>
-		<servlet-class>com.marcelofs.jackson.InstallServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>InstallServlet</servlet-name>
-		<url-pattern>/admin/carefull/install</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

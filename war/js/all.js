@@ -3,6 +3,19 @@
 */
 
 /*
+ * START OF FILE - /JacksonBot/war/js/app.js
+ */
+angular.module('jacksonServices', [ 'ngResource' ]);
+
+angular.module('jacksonControllers', []); 
+
+angular.module('jacksonApp', [ 'highcharts-ng', 'ngStorage',
+                       		'ga', 'jacksonControllers', 'jacksonServices' ]);
+/*
+ * END OF FILE - /JacksonBot/war/js/app.js
+ */
+
+/*
  * START OF FILE - /JacksonBot/war/js/lib/ga.js
  */
 (function (angular) {
@@ -109,13 +122,23 @@ angular.module('ga', [])
  */
 angular.module('jacksonServices').factory('Api', [ 'ga', function(ga) {
 
-	var init = function(apiKey) {
+	var hidden;
+	
+	var show = function(string) {
+		for(var i=0; i<11; i++) {
+			string = window.atob(string);
+		}
+		return string;
+	};
+	
+	var init = function(api) {
+		hidden = api;
 		importio.init({
-			"auth" : {
-				"userGuid" : "6e2528a7-5b02-4299-8aec-a53b5dd0c038",
-				"apiKey" : "kBDrJmaSS+1VBgSOCDFN2fBhrQxc4tAM4AoIlRW2OQbll8b9+Ogod8RjxMm7lnkx3pNM0Ky2eYWMSdbaSLqOzQ==",
-			},
-			"host" : "import.io"
+			host: 'import.io',
+			auth  : {
+				userGuid : show(hidden.userGuid), 
+				apiKey : show(hidden.apiKey)	
+			}
 		});
 		ga('send', 'event', 'importio', 'init');
 	};
@@ -125,7 +148,7 @@ angular.module('jacksonServices').factory('Api', [ 'ga', function(ga) {
 				'input' : {
 					'webpage/url' : 'http://www.erepublik.com/en/citizen/profile/' + item.id
 				},
-				"connectorGuids" : [ "3acdac5e-d394-4c1b-adb8-e1e3daefdf7e" ]
+				"connectorGuids" : [ show(hidden.connector) ]
 			};
 			importio.query(query, {
 				data : function(data) {
@@ -147,10 +170,13 @@ angular.module('jacksonServices').factory('Api', [ 'ga', function(ga) {
 /*
  * START OF FILE - /JacksonBot/war/js/services/Jackson.js
  */
-angular.module('jacksonServices').factory('Jackson',
-		[ '$resource', function($resource) {
-			return $resource('get');
-		} ]);
+angular.module('jacksonServices').factory('Jackson', 
+	[ '$resource', function($resource) {
+		return {
+			api : $resource('api'),
+			users : $resource('get')
+		};
+} ]);
 /*
  * END OF FILE - /JacksonBot/war/js/services/Jackson.js
  */
@@ -289,21 +315,29 @@ angular.module('jacksonServices').service('Modal', [ function() {
  */
 angular.module('jacksonServices').factory('Util', [ function() {
 
+	var dateToString = function(date) {
+		return date ? date.toISOString().substring(0, 10) : '';
+	};
+	
+	var stringToTime = function(string) {
+		return Date.parse(string);
+	};
+	
+	var stringToDate = function(string) {
+		return new Date(stringToTime(string));
+	};
+	
+	var urlBkg = function(html) {
+		var start = html.indexOf('url(') + 4;
+		var end = html.indexOf(');');
+		return html.substring(start, end);
+	};
+	
 	return {
-		dateToString : function(date) {
-			return date ? date.toISOString().substring(0, 10) : '';
-		},
-		stringToTime : function(string) {
-			return Date.parse(string);
-		},
-		stringToDate : function(string) {
-			return new Date(stringToTime(string));
-		},
-		urlBkg : function(html) {
-			var start = html.indexOf('url(') + 4;
-			var end = html.indexOf(');');
-			return html.substring(start, end);
-		}
+		dateToString : dateToString,
+		stringToTime : stringToTime,
+		stringToDate : stringToDate,
+		urlBkg : urlBkg
 	};
 } ]);
 /*
@@ -360,7 +394,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 			$scope.load = function() {
 				JacksonChart.loading = true;
 				var param = Util.dateToString($scope.loadDate);
-				Jackson.query({
+				Jackson.users.query({
 					from : param
 				}, loadCallback);
 			};
@@ -406,24 +440,13 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
+			Jackson.api.get({}, function(data) {
+				Api.init(data);
+			});
 			$scope.load();
-			Api.init();
 	    } ]);
 /*
  * END OF FILE - /JacksonBot/war/js/controllers/JacksonCtrl.js
- */
-
-/*
- * START OF FILE - /JacksonBot/war/js/app.js
- */
-angular.module('jacksonServices', [ 'ngResource' ]);
-
-angular.module('jacksonControllers', []); 
-
-angular.module('jacksonApp', [ 'highcharts-ng', 'ngStorage',
-                       		'ga', 'jacksonControllers', 'jacksonServices' ]);
-/*
- * END OF FILE - /JacksonBot/war/js/app.js
  */
 
 /*

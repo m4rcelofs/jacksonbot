@@ -91,6 +91,8 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
+			Jackson.api.get({}, function(data) {
+				Api.init(data);
+			});
 			$scope.load();
-			Api.init();
 	    } ]);
