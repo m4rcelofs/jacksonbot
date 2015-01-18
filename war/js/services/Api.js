@@ -22,6 +22,10 @@ angular.module('jacksonServices').factory('Api', [ 'ga', function(ga) {
 	};
 	
 	var query = function(item, callback) {
+		if(!hidden) {
+			callback(null, {error : 'Call init() first'});
+			return;
+		}
 		var query = {
 				'input' : {
 					'webpage/url' : 'http://www.erepublik.com/en/citizen/profile/' + item.id
