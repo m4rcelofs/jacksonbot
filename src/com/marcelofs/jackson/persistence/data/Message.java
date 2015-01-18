@@ -32,8 +32,9 @@ public class Message implements Serializable {
 		return key;
 	}
 
-	public void setKey(Key key) {
+	public Message setKey(Key key) {
 		this.key = key;
+		return this;
 	}
 
 	public String getSubject() {

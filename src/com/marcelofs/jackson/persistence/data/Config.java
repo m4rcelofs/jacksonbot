@@ -39,8 +39,9 @@ public class Config implements Serializable {
 		return key;
 	}
 
-	public void setKey(Key key) {
+	public Config setKey(Key key) {
 		this.key = key;
+		return this;
 	}
 
 	public Boolean getEnabled() {

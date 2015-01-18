@@ -1,5 +1,6 @@
 package com.marcelofs.jackson.persistence.dao;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
 
 import com.marcelofs.jackson.persistence.data.Config;
@@ -11,6 +12,10 @@ public class Configs extends GenericDAO<Config> {
 	}
 
 	public Config getDefault() {
-		return get(1L);
+		try {
+			return get(1L);	
+		} catch (JDOObjectNotFoundException e) {
+			return add(new Config().setKey(toKey(1L)));
+		}
 	}
 }

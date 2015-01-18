@@ -31,8 +31,8 @@ public class GenericDAO<T> {
 		return null;
 	}
 
-	public void add(T t) {
-		pm.makePersistent(t);
+	public T add(T t) {
+		return pm.makePersistent(t);
 	}
 
 	public T get(long id) {
