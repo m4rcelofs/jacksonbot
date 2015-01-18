@@ -5,3 +5,13 @@ body {
 	background-position: right 0px bottom 0px;
 	background-image: url('/img/mj-320.jpg');
 }
+
+.hide-overflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.white {
+	color: #FFFFFF;
+}

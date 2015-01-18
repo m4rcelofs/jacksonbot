@@ -1,2 +1,6 @@
-var jacksonApp = angular.module('jacksonApp', [ 'highcharts-ng',
-		'jacksonControllers', 'jacksonServices' ]);
+angular.module('jacksonServices', [ 'ngResource' ]);
+
+angular.module('jacksonControllers', []); 
+
+angular.module('jacksonApp', [ 'highcharts-ng', 'ngStorage',
+                       		'ga', 'jacksonControllers', 'jacksonServices' ]);

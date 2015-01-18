@@ -2,7 +2,9 @@
 <rockstarapps>
     
 
-<file name="war/js/index.all.js">
+
+
+<file name="war/js/all.js">
         <min>false</min>
         <comp>true</comp>
         <closureCompiler>false</closureCompiler>
@@ -12,12 +14,18 @@
         <autoBuild>true</autoBuild>
         <lineLength>-1</lineLength>
         <autoTimestamps>false</autoTimestamps>
-        <removeLogs>true</removeLogs>
+        <removeLogs>false</removeLogs>
         <oldFileNames>false</oldFileNames>
         <dependencies>
-            <file>war/js/chartOptions.js</file>
-            <file>war/js/services.js</file>
-            <file>war/js/controllers.js</file>
+            <file>war/js/lib/ga.js</file>
+            <file>war/js/lib/highcharts-ng.min.js</file>
+            <file>war/js/lib/ngStorage.min.js</file>
+            <file>war/js/services/Api.js</file>
+            <file>war/js/services/Jackson.js</file>
+            <file>war/js/services/JacksonChart.js</file>
+            <file>war/js/services/Modal.js</file>
+            <file>war/js/services/Util.js</file>
+            <file>war/js/controllers/JacksonCtrl.js</file>
             <file>war/js/app.js</file>
         </dependencies>
         <properties/>
