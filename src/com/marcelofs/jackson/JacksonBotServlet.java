@@ -53,8 +53,7 @@ public class JacksonBotServlet extends HttpServlet {
 		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
 			Boolean enabled = new Configs(pm).getDefault().getEnabled();
 			LocalDate yesterday = new LocalDate(eRepTimeZone).minus(Days.ONE);
-			if (enabled != null && enabled)
-				addToQueue(yesterday, true);
+			addToQueue(yesterday, enabled != null && enabled);
 		}
 	}
 
