@@ -74,11 +74,11 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				var key = $scope.selectedDay;
 				if(date) {
 					key = Util.dateToString(date);
-					$scope.selectedDay = key;
 				}
 				if(!$session.cache[key]) {
 					return;
-				}	
+				}
+				$scope.selectedDay = key;
 				$scope.selectedNewPlayers = [];
 				$session.cache[key].forEach(function(item){
 					$scope.selectedNewPlayers.push({
