@@ -17,7 +17,7 @@ import com.marcelofs.jackson.persistence.PMF;
 import com.marcelofs.jackson.persistence.dao.NewUsersDays;
 import com.marcelofs.jackson.persistence.data.NewUsersDay;
 
-public class NewUsersServlet extends HttpServlet {
+public class NewPlayersServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
