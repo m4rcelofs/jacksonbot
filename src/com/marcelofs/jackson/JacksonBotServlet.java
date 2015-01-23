@@ -3,6 +3,7 @@ package com.marcelofs.jackson;
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withPayload;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,8 +55,7 @@ public class JacksonBotServlet extends HttpServlet {
 	private void getDate(LocalDate date) {
 		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
 			Boolean enabled = new Configs(pm).getDefault().getEnabled();
-			LocalDate today = new LocalDate(eRepTimeZone);
-			addToQueue(today, enabled != null && enabled);
+			addToQueue(date, enabled != null && enabled);
 		}
 	}
 
@@ -75,7 +75,8 @@ public class JacksonBotServlet extends HttpServlet {
 				sendMessage);
 		Queue queue = QueueFactory.getDefaultQueue();
 		TaskOptions taskOptions = withPayload(task).taskName(
-				"GetNewUsersTask_" + date.toString("yyyyMMdd"));
+				"GetNewUsersTask_" + date.toString("yyyyMMdd_")
+						+ new Random().nextInt());
 		queue.addAsync(taskOptions);
 	}
 }
