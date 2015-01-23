@@ -4,17 +4,20 @@ import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
 import java.io.IOException;
 
+import javax.jdo.JDOObjectNotFoundException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
 import org.json.simple.JSONObject;
 
-import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.marcelofs.jackson.persistence.CloseablePM;
+import com.marcelofs.jackson.persistence.PMF;
+import com.marcelofs.jackson.persistence.dao.Users;
+import com.marcelofs.jackson.persistence.data.User;
 
 public class UserServlet extends HttpServlet {
 
@@ -30,16 +33,28 @@ public class UserServlet extends HttpServlet {
 		resp.setContentType("application/json");
 
 		UserService userService = UserServiceFactory.getUserService();
-		User user = userService.getCurrentUser();
+		com.google.appengine.api.users.User gUser = userService
+				.getCurrentUser();
 
-		if (user == null) {
+		if (gUser == null) {
 			resp.sendError(SC_UNAUTHORIZED);
 		} else {
 			JSONObject response = new JSONObject();
-			response.put("email", user.getEmail());
-			response.put("nick", user.getNickname());
-			response.put("expires", new LocalDate(eRepTimeZone).plusDays(1)
-					.toString("yyyy-MM-dd"));
+
+			try (CloseablePM pm = PMF.getNewPersistenceManager()) {
+				Users dao = new Users(pm);
+				User user = dao.getCurrent();
+				response.put("nick", user.getNick());
+				response.put("id", user.getId());
+				response.put("party", user.getParty());
+				response.put("mu", user.getMu());
+				response.put("hasLicence", dao.hasLicence(user));
+				response.put("hasLicence", true); // FIXME
+			} catch (JDOObjectNotFoundException e) {
+				resp.sendRedirect("/login?create");
+			}
+
+			response.put("email", gUser.getEmail());
 			resp.getWriter().write(response.toString());
 		}
 	}

@@ -2,6 +2,7 @@ angular.module('jacksonServices').factory('Jackson',
 	[ '$resource', function($resource) {
 		return {
 			api : $resource('api'),
-			users : $resource('get')
+			players : $resource('get'),
+			user : $resource('user')
 		};
 } ]);

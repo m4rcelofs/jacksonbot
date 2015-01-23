@@ -71,30 +71,48 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" target="_blank"
 					href="http://www.erepublik.com/en/economy/donate-money/5313713"
-					ga="'send', 'event', 'erep', 'click', 'sponsor'">Jackson
-					Bot</a>
+					ga="'send', 'event', 'erep', 'click', 'sponsor'">
+					Jackson Bot
+				</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<p class="navbar-text">Correndo atrás dos novinhos do eBR</p>
-
+				<form class="navbar-form navbar-right">
+					<div class="btn-group">
+						<button type="button" class="btn btn-default" data-toggle="modal"
+							data-target="#config" ng-click="configClick()"
+							ga="'send', 'pageview', '/config'"
+							title="Configurações">
+							<span class="fa fa-cog"></span>
+						</button>
+					</div>
+					<div class="btn-group">
+						<a type="button" class="btn"
+							ng-class="user ? 'btn-danger' : 'btn-success'"
+							title="{{user ? 'Logout' : 'Login'}}"
+							href="/login"
+							ga="'send', 'pageview', '/login'">
+							<span class="fa fa-power-off"></span>
+						</a>
+					</div>
+				</form>
 				<form class="navbar-form navbar-right" role="search"
 					ng-submit="load()" ga-on="submit"
+					ng-if="user && user.hasLicence"
 					ga="[
-						 ['send', 'event', 'search', 'submit'],
-						 ['send', 'pageview', '/']
-						]">
+ 						 ['send', 'event', 'search', 'submit'],
+ 						 ['send', 'pageview', '/'] 
+ 						]"> 
 					<div class="form-group">
-						<input type="date" class="form-control" min="2013-05-28"
-							max="9999-12-30" placeholder="aaaa-MM-dd" ng-model="loadDate">
+						<input type="date" class="form-control" 
+							min="2013-05-28"
+							max="{{maxDate}}" 
+							placeholder="aaaa-MM-dd" 
+							ng-model="$parent.loadDate">
 					</div>
 					<button type="submit" class="btn btn-success"
-						title="{{ chartOpts.series[0].data.length }} dias carregados">
+						title="{{ JacksonChart.series[0].data.length }} dias carregados">
 						<span class="fa fa-search"> </span>
-					</button>
-					<button type="button" class="btn btn-success" data-toggle="modal"
-						data-target="#config" ng-click="configClick()"
-						ga="'send', 'pageview', '/config'">
-						<span class="fa fa-cog"></span>
 					</button>
 				</form>
 			</div>
@@ -107,16 +125,44 @@
 				JavaScript está desativado ):
 			</div>
 		</noscript>
+		<div class="alert alert-info text-center" role="alert"
+			ng-if="!user">
+			<span class="fa fa-power-off"></span>
+			<a href="/login">
+				Durante o período de testes todos os usuários ganham conta PRO de graça!
+			</a>
+		</div>
+		<div class="alert alert-info alert-dismissible fade in" role="alert"
+			ng-if="(!user || !user.hasLicence)">
+			<button type="button" class="close" 
+					ng-click="$storage.closedPROAlert = !$storage.closedPROAlert">
+				<span ng-if="!$storage.closedPROAlert" class="fa fa-caret-up"></span>
+				<span ng-if="$storage.closedPROAlert" class="fa fa-caret-down"></span>
+			</button>
+			<h4>Assine e aproveite!</h4>
+			<ul ng-if="!$storage.closedPROAlert" class="animate-if">
+				<li>Dados de novos jogadores desde jun/2013! <s class="text-muted">em breve</s></li>
+				<li>Veja os jogadores que entraram nos últimos 3 dias! <s class="text-muted">em breve</s></li>
+				<li>Atualização mais freqüente, mostrando os novos jogadores de hoje! <s class="text-muted">em breve</s></li>
+				<li>Filtre jogadores pos nível, jornal, MU, etc! <mark>em breve</mark></li>
+			</ul>
+			<p ng-if="!user">Faça seu login e ganhe 24h gratuitas!</p>
+			<p ng-if="user">Compre seu pacote no 
+				<a href="http://qchat.rizon.net/?channels=jackson">#jackson</a>
+				: 30d = 5g, 6m = 24g, 12m = 36g
+			</p> 
+		</div>
 		<highchart id="chart" config="JacksonChart"></highchart>
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6">
 				<button type="button" class="btn btn-lg btn-block btn-success"
 					ng-click="select()"
 					ga="[
-							 ['send', 'event', 'button', 'click', 'view new button'], 
-							 ['send', 'pageview', '/details']
-							]">
-					Ver novos jogadores do dia {{selectedDay}}!</button>
+						 ['send', 'event', 'button', 'click', 'view new button'], 
+						 ['send', 'pageview', '/details']
+						]">
+					Ver novos jogadores do dia {{selectedDay}}!
+				</button>
 			</div>
 		</div>
 	</div>
@@ -135,15 +181,38 @@
 					<h4 class="modal-title">Configurações</h4>
 				</div>
 				<div class="modal-body">
-					<form>
-						<div class="checkbox">
-							<label> <input type="checkbox"
-								ng-model="$storage.apiEnabled"
-								ga="'send', 'event', 'checkbox', 'click', 'config auto fetch'">
-								Ativar busca automática de jogadores
-							</label>
+					<form ng-if="user">
+						<div>
+							<span class="fa fa-user"></span>
+							<a ng-href="http://www.erepublik.com/en/citizen/profile/{{user.id}}">{{user.nick}}</a>
+						</div>
+						<div>
+							<span class="fa fa-envelope-o"></span>
+							<span>{{user.email}}</span> 
+						</div>
+						<div>
+							<span class="fa fa-angellist"></span>
+							<span>{{user.party}}</span> 
+						</div>
+						<div>
+							<span class="fa fa-flag-o"></span>
+							<span>{{user.mu}}</span> 
+						</div>
+						<div>
+							<span class="fa fa-calendar"></span>
+							<span>Licença PRO até: </span>
+							<span ng-class="licenceExpired() ? 'text-danger' : 'text-success'">
+								{{user.expires}}
+							</span>
 						</div>
 					</form>
+					<div class="checkbox">
+						<label> <input type="checkbox"
+							ng-model="$storage.apiEnabled"
+							ga="'send', 'event', 'checkbox', 'click', 'config auto fetch'">
+							Ativar busca automática de jogadores
+						</label>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal"
@@ -227,7 +296,7 @@
 								</div>
 								<div class="row hide-overflow">
 									<small ng-class="!player.query.referrer ? 'text-muted' : ''"
-										title="Referer"> <span class="fa fa-user"></span> <a
+										title="Referer ou primeiro amigo"> <span class="fa fa-user"></span> <a
 										target="_blank"
 										ga="'send', 'event', 'erep', 'click', 'referer'"
 										ng-href="{{player.query.referrer}}">

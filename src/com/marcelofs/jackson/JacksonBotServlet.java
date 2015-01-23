@@ -41,19 +41,21 @@ public class JacksonBotServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		String from = req.getParameter("from");
-		if (from == null || from.trim().isEmpty()
+		if ("yesterday".equalsIgnoreCase(from)) {
+			getDate(new LocalDate(eRepTimeZone).minusDays(1));
+		} else if (from == null || from.trim().isEmpty()
 				|| !from.matches("\\d{4}-\\d{2}-\\d{2}")) {
-			getYesterday();
+			getDate(new LocalDate(eRepTimeZone));
 		} else {
 			getFrom(from);
 		}
 	}
 
-	private void getYesterday() {
+	private void getDate(LocalDate date) {
 		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
 			Boolean enabled = new Configs(pm).getDefault().getEnabled();
-			LocalDate yesterday = new LocalDate(eRepTimeZone).minus(Days.ONE);
-			addToQueue(yesterday, enabled != null && enabled);
+			LocalDate today = new LocalDate(eRepTimeZone);
+			addToQueue(today, enabled != null && enabled);
 		}
 	}
 

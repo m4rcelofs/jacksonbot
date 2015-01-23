@@ -4,7 +4,14 @@
 	<cron>
 		<url>/admin/start</url>
 		<description>Starts JacksonBot</description>
-		<schedule>every day 00:30</schedule>
+		<schedule>every 2 hours from 06:30 to 18:30</schedule>
+		<timezone>America/Los_Angeles</timezone>
+	</cron>
+	
+	<cron>
+		<url>/admin/start?from=yesterday</url>
+		<description>Starts JacksonBot to check last users for the day</description>
+		<schedule>every day 00:55</schedule>
 		<timezone>America/Los_Angeles</timezone>
 	</cron>
 

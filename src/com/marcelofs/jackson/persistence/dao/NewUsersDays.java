@@ -6,6 +6,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import org.joda.time.LocalDate;
+
 import com.google.appengine.api.datastore.Key;
 import com.marcelofs.jackson.persistence.data.NewUsersDay;
 
@@ -27,14 +29,23 @@ public class NewUsersDays extends GenericDAO<NewUsersDay> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<NewUsersDay> getFrom(String date) {
-		Query q = newQuery("day >= dayParam");
+	public List<NewUsersDay> getFrom(LocalDate from, LocalDate to) {
+		Query q = newQuery("day >= fromParam && day <= toParam");
 		q.setOrdering("day asc");
-		q.declareParameters(Key.class.getName() + " dayParam");
-		return (List<NewUsersDay>) q.execute(toKey(date));
+		q.declareParameters(Key.class.getName() + " fromParam, "
+				+ Key.class.getName() + " toParam");
+		return (List<NewUsersDay>) q.execute(toKey(from), toKey(to));
 	}
 
 	public Key toKey(String date) {
 		return toKey(Long.valueOf(date.replace("-", "")));
+	}
+
+	public Key toKey(LocalDate date) {
+		return toKey(format(date));
+	}
+
+	private String format(LocalDate date) {
+		return date.toString("yyyyMMdd");
 	}
 }

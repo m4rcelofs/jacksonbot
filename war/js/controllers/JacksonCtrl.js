@@ -12,6 +12,10 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 			$scope.JacksonChart = JacksonChart;
 			$scope.Util = Util;
 			
+			$scope.user;
+			$scope.selectedDay = '';
+			$scope.selectedNewPlayers = [];
+			
 			var queryCallback = function(item, data) {
 				var response = data[0].data;
 				item.query = response;
@@ -37,15 +41,17 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 							item.newUsers.length ]);
 					$session.cache[item.day] = item.newUsers;
 				});
-				$scope.selectedDay = data[data.length-1].day;
-				JacksonChart.series[0].data = newData;
+				if(data.length > 0) {
+					$scope.selectedDay = data[data.length-1].day;
+					JacksonChart.series[0].data = newData;					
+				}
 				JacksonChart.loading = false;
 			};
 			
 			$scope.load = function() {
 				JacksonChart.loading = true;
 				var param = Util.dateToString($scope.loadDate);
-				Jackson.users.query({
+				Jackson.players.query({
 					from : param
 				}, loadCallback);
 			};
@@ -91,8 +97,17 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
+			var max = new Date();
+			max.setDate(max.getDate()-1); //FIXME
+			$scope.maxDate = Util.dateToString(max);
+
+			Jackson.user.get({}, function(data){
+				$scope.user = data;
+			});
+			
 			Jackson.api.get({}, function(data) {
 				Api.init(data);
 			});
+			
 			$scope.load();
 	    } ]);
