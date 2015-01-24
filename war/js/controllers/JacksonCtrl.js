@@ -97,6 +97,38 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
+			$scope.search = {};
+			$scope.doSearch = function(item){
+				if(!item.query) { return true; } //not loaded yet
+
+				var result = true;
+				if(result && $scope.search.avatar) {
+					result = item.avatar && (item.avatar.indexOf('default_male.gif') == -1);
+				}
+				if(result && $scope.search.party) {
+					result = item.query.party || false;
+				}
+				if(result && $scope.search.newspaper) {
+					result = item.query.newspaper || false;
+				}
+				if(result && $scope.search.mu) {
+					result = item.query.mu || false;
+				}
+				if(result && $scope.search.alive) {
+					result = !item.query.dead && !item.query.banned;
+				}
+				if(result && $scope.search.level) {
+					result = item.query.level && parseInt(item.query.level) > 1;
+				}
+				if(result && $scope.search.friends) {
+					result = item.query.friends && parseInt(item.query.friends) > 1;
+				}
+				if(result && $scope.search.messaged) {
+					//TODO
+				}
+				return result;
+			};
+			
 			$scope.maxDate = Util.dateToString(new Date());
 
 			Jackson.user.get({}, function(data){

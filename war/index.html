@@ -135,20 +135,22 @@
 		<div class="alert alert-info alert-dismissible fade in" role="alert"
 			ng-if="(!user || !user.hasLicence)">
 			<button type="button" class="close" 
-					ng-click="$storage.closedPROAlert = !$storage.closedPROAlert">
+					ng-click="$storage.closedPROAlert = !$storage.closedPROAlert"
+					ga="'send', 'event', 'pro alert', 'click'">
 				<span ng-if="!$storage.closedPROAlert" class="fa fa-caret-up"></span>
 				<span ng-if="$storage.closedPROAlert" class="fa fa-caret-down"></span>
 			</button>
 			<h4>Assine e aproveite!</h4>
 			<ul ng-if="!$storage.closedPROAlert" class="animate-if">
-				<li>Dados de novos jogadores desde jun/2013! <s class="text-muted">em breve</s></li>
-				<li>Veja os jogadores que entraram nos últimos 3 dias! <s class="text-muted">em breve</s></li>
-				<li>Atualização mais freqüente, mostrando os novos jogadores de hoje! <s class="text-muted">em breve</s></li>
-				<li>Filtre jogadores pos nível, jornal, MU, etc! <mark>em breve</mark></li>
+				<li>Dados de novos jogadores desde jun/2013!</li>
+				<li>Atualização mais freqüente, mostrando os novos jogadores de hoje!</li>
+				<li>Filtre jogadores por nível, jornal, MU, etc!</li>
+				<li>Marque para quem você já enviou mensagem! <mark>em breve</mark></li>
 			</ul>
 			<p ng-if="!user">Faça seu login e ganhe 24h gratuitas!</p>
 			<p ng-if="user">Compre seu pacote no 
-				<a href="http://qchat.rizon.net/?channels=jackson">#jackson</a>
+				<a href="http://qchat.rizon.net/?channels=jackson"
+				ga="'send', 'pageview', '/chat'">#jackson</a>
 				: 30d = 5g, 6m = 24g, 12m = 36g
 			</p> 
 		</div>
@@ -250,8 +252,102 @@
 					</button>
 				</div>
 				<div class="modal-body">
+					<div class="row" ng-if="user && user.hasLicence">
+						<div class="col-md-offset-1 col-md-10">
+							<div class="panel-group" id="accordion" role="tablist">
+	  							<div class="panel panel-default">
+	    							<div class="panel-heading" role="tab" id="headingOne">
+	      								<h4 class="panel-title">
+	        								<a data-toggle="collapse" data-parent="#accordion" href="#filters"
+	        								ga="'send', 'event', 'filters', 'click', 'open/close'">
+	          									Filtros
+	        								</a>
+	        								<a class="pull-right" 
+	        									data-toggle="collapse" data-parent="#accordion" href="#filters"
+	        									ga="'send', 'event', 'filters', 'click', 'open/close'">
+	        									<span class="fa fa-ellipsis-v"></span>
+	        								</a>
+	      								</h4>
+	    							</div>
+	    							<div id="filters" class="panel-collapse collapse in" role="tabpanel">
+	      								<div class="panel-body">
+	      									<div class="row">
+	      										<div class="col-md-1 checkbox">Com...</div>
+	      										<div class="col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.avatar"
+          													ga="'send', 'event', 'filters', 'click', 'avatar'"> Avatar
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.party"
+          													ga="'send', 'event', 'filters', 'click', 'party'"> Partido
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.newspaper"
+          													ga="'send', 'event', 'filters', 'click', 'newspaper'"> Jornal
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-3">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.mu"
+          													ga="'send', 'event', 'filters', 'click', 'mu'"> Unidade Militar
+        												</label>
+      												</div>
+	      										</div>
+	      									</div>
+	      									<div class="row">
+	      										<div class="col-md-offset-1 col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.alive"
+          													ga="'send', 'event', 'filters', 'click', 'alive'"> Vivo 
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.level"
+          													ga="'send', 'event', 'filters', 'click', 'level'"> Nível > 1
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-2">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="search.friends"
+          													ga="'send', 'event', 'filters', 'click', 'friends'"> Amigos
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-3">
+<!-- 	      											<div class="checkbox"> -->
+<!--         												<label> -->
+<!--           													<input type="checkbox" ng-model="search.messaged" -->
+<!--           													ga="'send', 'event', 'filters', 'click', 'messaged'"> Mensagem Enviada -->
+<!--         												</label> -->
+<!--       												</div> -->
+	      										</div>
+	      									</div>
+	      								</div>
+	      							</div>
+	      						</div>
+	      					</div>
+	      				</div>
+					</div>
 					<div class="row">
-						<div ng-repeat="player in selectedNewPlayers">
+						<div ng-repeat="player in selectedNewPlayers | filter:doSearch">
 							<div class="col-md-1"
 								ng-class="'[online]' === player.query.status ? 'bg-success' : ''">
 								<div class="row">
