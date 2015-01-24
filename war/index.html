@@ -276,7 +276,7 @@
 	      										<div class="col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.avatar"
+          													<input type="checkbox" ng-model="$storage.search.avatar"
           													ga="'send', 'event', 'filters', 'click', 'avatar'"> Avatar
         												</label>
       												</div>
@@ -284,7 +284,7 @@
 	      										<div class="col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.party"
+          													<input type="checkbox" ng-model="$storage.search.party"
           													ga="'send', 'event', 'filters', 'click', 'party'"> Partido
         												</label>
       												</div>
@@ -292,7 +292,7 @@
 	      										<div class="col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.newspaper"
+          													<input type="checkbox" ng-model="$storage.search.newspaper"
           													ga="'send', 'event', 'filters', 'click', 'newspaper'"> Jornal
         												</label>
       												</div>
@@ -300,7 +300,7 @@
 	      										<div class="col-md-3">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.mu"
+          													<input type="checkbox" ng-model="$storage.search.mu"
           													ga="'send', 'event', 'filters', 'click', 'mu'"> Unidade Militar
         												</label>
       												</div>
@@ -310,7 +310,7 @@
 	      										<div class="col-md-offset-1 col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.alive"
+          													<input type="checkbox" ng-model="$storage.search.alive"
           													ga="'send', 'event', 'filters', 'click', 'alive'"> Vivo 
         												</label>
       												</div>
@@ -318,7 +318,7 @@
 	      										<div class="col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.level"
+          													<input type="checkbox" ng-model="$storage.search.level"
           													ga="'send', 'event', 'filters', 'click', 'level'"> Nível > 1
         												</label>
       												</div>
@@ -326,7 +326,7 @@
 	      										<div class="col-md-2">
 	      											<div class="checkbox">
         												<label>
-          													<input type="checkbox" ng-model="search.friends"
+          													<input type="checkbox" ng-model="$storage.search.friends"
           													ga="'send', 'event', 'filters', 'click', 'friends'"> Amigos
         												</label>
       												</div>
@@ -334,7 +334,7 @@
 	      										<div class="col-md-3">
 <!-- 	      											<div class="checkbox"> -->
 <!--         												<label> -->
-<!--           													<input type="checkbox" ng-model="search.messaged" -->
+<!--           													<input type="checkbox" ng-model="$storage.search.messaged" -->
 <!--           													ga="'send', 'event', 'filters', 'click', 'messaged'"> Mensagem Enviada -->
 <!--         												</label> -->
 <!--       												</div> -->
@@ -384,10 +384,13 @@
 									<a target="_blank"
 										ga="'send', 'event', 'erep', 'click', 'player'"
 										ng-href="http://www.erepublik.com/en/citizen/profile/{{player.id}}">
-										{{player.query.name || player.id }}</a> <a target="_blank"
+										{{player.query.name || player.id }}
+									</a> 
+									<a target="_blank"
 										ga="'send', 'event', 'erep', 'click', 'message'"
 										ng-href="http://www.erepublik.com/en/main/messages-compose/{{player.id}}">
-										<span class="fa fa-envelope-o"></span>
+											<small>(enviar </small>
+											<span class="fa fa-envelope-o"></span><small>) </small>
 									</a>
 								</div>
 								<div class="row hide-overflow">
@@ -427,6 +430,9 @@
 					</div>
 				</div>
 				<div class="modal-footer">
+					<span class="pull-left">
+						{{messagesSent || 0}} mensagens enviadas
+					</span>
 					<button type="button" class="btn btn-default"
 						title="Atualizar status online" ng-click="execApi()">
 						<span class="fa fa-refresh"></span>

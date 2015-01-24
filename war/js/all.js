@@ -451,33 +451,36 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
-			$scope.search = {};
+			if(!$storage.search) {
+				$storage.search = {};	
+			}
+			
 			$scope.doSearch = function(item){
 				if(!item.query) { return true; } //not loaded yet
 
 				var result = true;
-				if(result && $scope.search.avatar) {
+				if(result && $storage.search.avatar) {
 					result = item.avatar && (item.avatar.indexOf('default_male.gif') == -1);
 				}
-				if(result && $scope.search.party) {
+				if(result && $storage.search.party) {
 					result = item.query.party || false;
 				}
-				if(result && $scope.search.newspaper) {
+				if(result && $storage.search.newspaper) {
 					result = item.query.newspaper || false;
 				}
-				if(result && $scope.search.mu) {
+				if(result && $storage.search.mu) {
 					result = item.query.mu || false;
 				}
-				if(result && $scope.search.alive) {
+				if(result && $storage.search.alive) {
 					result = !item.query.dead && !item.query.banned;
 				}
-				if(result && $scope.search.level) {
+				if(result && $storage.search.level) {
 					result = item.query.level && parseInt(item.query.level) > 1;
 				}
-				if(result && $scope.search.friends) {
+				if(result && $storage.search.friends) {
 					result = item.query.friends && parseInt(item.query.friends) > 1;
 				}
-				if(result && $scope.search.messaged) {
+				if(result && $storage.search.messaged) {
 					//TODO
 				}
 				return result;
