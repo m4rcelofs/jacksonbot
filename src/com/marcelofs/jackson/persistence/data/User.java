@@ -18,6 +18,10 @@ public class User implements Serializable {
 	@PrimaryKey
 	@Persistent
 	private Key key;
+	
+	@Persistent
+	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
+	private String email;
 
 	@Persistent
 	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
@@ -39,6 +43,14 @@ public class User implements Serializable {
 	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private String expires;
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Key getKey() {
 		return key;
 	}

@@ -25,6 +25,7 @@ public class Users extends GenericDAO<User> {
 			return null;
 		User user = new User();
 		user.setKey(toKey(gUser.getUserId()));
+		user.setEmail(gUser.getEmail());
 		return add(user);
 	}
 
