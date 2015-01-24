@@ -97,9 +97,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				Modal.show();
 			};
 			
-			var max = new Date();
-			max.setDate(max.getDate()-1); //FIXME
-			$scope.maxDate = Util.dateToString(max);
+			$scope.maxDate = Util.dateToString(new Date());
 
 			Jackson.user.get({}, function(data){
 				$scope.user = data;
