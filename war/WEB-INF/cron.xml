@@ -4,7 +4,7 @@
 	<cron>
 		<url>/admin/start</url>
 		<description>Starts JacksonBot</description>
-		<schedule>every 2 hours from 06:30 to 18:30</schedule>
+		<schedule>every 1 hours from 04:30 to 18:30</schedule>
 		<timezone>America/Los_Angeles</timezone>
 	</cron>
 	
