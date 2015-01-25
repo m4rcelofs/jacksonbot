@@ -1,9 +1,17 @@
 angular.module('jacksonServices').service('Modal', [ function() {
-	var id = 'newUsers';
-	var show = function() {
-		$('#' + id).modal('show');
+	var defaultId = 'newUsers';
+	var show = function(id) {
+		$('#' + id || defaultId).modal('show');
+	};
+	var toggle = function(id) {
+		$('#' + id || defaultId).modal('toggle');
+	};
+	var hide = function(id) {
+		$('#' + id || defaultId).modal('hide');
 	};
 	return {
-		show : show
+		show : show,
+		toggle : toggle,
+		hide : hide
 	};
 } ]);
