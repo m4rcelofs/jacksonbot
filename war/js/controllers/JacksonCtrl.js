@@ -1,14 +1,18 @@
 angular.module('jacksonControllers').controller('JacksonCtrl', [
-	    '$localStorage', '$sessionStorage', '$scope',
+	    '$interval', '$localStorage', '$sessionStorage', '$scope',
 		'Api', 'ga',
 		'Jackson', 'JacksonChart',
 		'Modal', 'Util',
-		function($storage, $session, $scope, Api, ga, Jackson, JacksonChart,  Modal, Util) {
+		function($interval, $storage, $session, $scope, Api, ga, Jackson, JacksonChart,  Modal, Util) {
 
 			$scope.$storage = $storage.$default({
-				apiEnabled: true
+				apiEnabled: true,
+				search: {},
+				messagesSent: 0
 			});
-			$scope.$session = $session;
+			$scope.$session = $session.$default({
+				messagesSent: 0
+			});
 			$scope.JacksonChart = JacksonChart;
 			$scope.Util = Util;
 			
@@ -94,15 +98,12 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				if($storage.apiEnabled) {
 					$scope.execApi();	
 				}
-				Modal.show();
+				Modal.show('newUsers');
 			};
-			
-			if(!$storage.search) {
-				$storage.search = {};	
-			}
 			
 			$scope.doSearch = function(item){
 				if(!item.query) { return true; } //not loaded yet
+				if(!$scope.user || !$scope.user.hasLicence) { return true; }
 
 				var result = true;
 				if(result && $storage.search.avatar) {
@@ -127,7 +128,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 					result = item.query.friends && parseInt(item.query.friends) > 1;
 				}
 				if(result && $storage.search.messaged) {
-					//TODO
+					result = !$scope.isSent(item);
 				}
 				return result;
 			};
@@ -141,10 +142,36 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				}
 			};
 			
+			$scope.markSent = function(player) {
+				if(!$storage[$scope.selectedDay]){
+					$storage[$scope.selectedDay] = {};
+				}
+				$storage[$scope.selectedDay][player.id] = true;
+				$storage.messagesSent++;
+				$session.messagesSent++;
+			};
+			
+			$interval(function(){
+				if($storage.messagesSent > $scope.user.messagesSent) {
+					Jackson.user.save({
+						messagesSent: $storage.messagesSent
+					}, function(response){
+						$scope.user.messagesSent = response.messagesSent;
+					});
+				}
+			}, 60000); //1min
+			
+			$scope.isSent = function(player) {
+				return $storage[$scope.selectedDay] && $storage[$scope.selectedDay][player.id];
+			}
+			
 			$scope.maxDate = Util.dateToString(new Date());
 
 			Jackson.user.get({}, function(data){
 				$scope.user = data;
+				if(data.messagesSent > $storage.messagesSent) {
+					$storage.messagesSent = data.messagesSent;
+				}
 			});
 			
 			Jackson.api.get({}, function(data) {

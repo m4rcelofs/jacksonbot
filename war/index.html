@@ -312,7 +312,7 @@
 	      								<h4 class="panel-title">
 	        								<a data-toggle="collapse" data-parent="#accordion" href="#filters"
 	        								ga="'send', 'event', 'filters', 'click', 'open/close'">
-	          									Filtros
+	          									Filtrar...
 	        								</a>
 	        								<a class="pull-right" 
 	        									data-toggle="collapse" data-parent="#accordion" href="#filters"
@@ -324,28 +324,27 @@
 	    							<div id="filters" class="panel-collapse collapse in" role="tabpanel">
 	      								<div class="panel-body">
 	      									<div class="row">
-	      										<div class="col-md-1 checkbox">Com...</div>
-	      										<div class="col-md-2">
+	      										<div class="col-md-3">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.avatar"
-          													ga="'send', 'event', 'filters', 'click', 'avatar'"> Avatar
+          													ga="'send', 'event', 'filters', 'click', 'avatar'"> Sem avatar
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-2">
+	      										<div class="col-md-3">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.party"
-          													ga="'send', 'event', 'filters', 'click', 'party'"> Partido
+          													ga="'send', 'event', 'filters', 'click', 'party'"> Sem partido
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-2">
+	      										<div class="col-md-3">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.newspaper"
-          													ga="'send', 'event', 'filters', 'click', 'newspaper'"> Jornal
+          													ga="'send', 'event', 'filters', 'click', 'newspaper'"> Sem jornal
         												</label>
       												</div>
 	      										</div>
@@ -353,43 +352,43 @@
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.mu"
-          													ga="'send', 'event', 'filters', 'click', 'mu'"> Unidade Militar
+          													ga="'send', 'event', 'filters', 'click', 'mu'"> Sem unidade militar
         												</label>
       												</div>
 	      										</div>
 	      									</div>
 	      									<div class="row">
-	      										<div class="col-md-offset-1 col-md-2">
+	      										<div class="col-md-3">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.alive"
-          													ga="'send', 'event', 'filters', 'click', 'alive'"> Vivo 
-        												</label>
-      												</div>
-	      										</div>
-	      										<div class="col-md-2">
-	      											<div class="checkbox">
-        												<label>
-          													<input type="checkbox" ng-model="$storage.search.level"
-          													ga="'send', 'event', 'filters', 'click', 'level'"> Nível > 1
-        												</label>
-      												</div>
-	      										</div>
-	      										<div class="col-md-2">
-	      											<div class="checkbox">
-        												<label>
-          													<input type="checkbox" ng-model="$storage.search.friends"
-          													ga="'send', 'event', 'filters', 'click', 'friends'"> Amigos
+          													ga="'send', 'event', 'filters', 'click', 'alive'"> Mortos/Banidos 
         												</label>
       												</div>
 	      										</div>
 	      										<div class="col-md-3">
-<!-- 	      											<div class="checkbox"> -->
-<!--         												<label> -->
-<!--           													<input type="checkbox" ng-model="$storage.search.messaged" -->
-<!--           													ga="'send', 'event', 'filters', 'click', 'messaged'"> Mensagem Enviada -->
-<!--         												</label> -->
-<!--       												</div> -->
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="$storage.search.level"
+          													ga="'send', 'event', 'filters', 'click', 'level'"> Nível 1
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-3">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="$storage.search.friends"
+          													ga="'send', 'event', 'filters', 'click', 'friends'"> Sem amigos
+        												</label>
+      												</div>
+	      										</div>
+	      										<div class="col-md-3">
+	      											<div class="checkbox">
+        												<label>
+          													<input type="checkbox" ng-model="$storage.search.messaged"
+          													ga="'send', 'event', 'filters', 'click', 'messaged'"> Com mensagem enviada
+        												</label>
+      												</div>
 	      										</div>
 	      									</div>
 	      								</div>
@@ -440,14 +439,18 @@
 									</a> 
 									<a target="_blank"
 										ga="'send', 'event', 'erep', 'click', 'message'"
-										ng-href="http://www.erepublik.com/en/main/messages-compose/{{player.id}}">
-											<small>(enviar </small>
-											<span class="fa fa-envelope-o"></span><small>) </small>
+										ng-href="http://www.erepublik.com/en/main/messages-compose/{{player.id}}"
+										ng-click="markSent(player)">
+											<small>{{!user || !user.hasLicence ? '(' : isSent(player) ?
+													'(enviada ' : '(enviar ' }}</small>
+											<span class="fa"
+												ng-class="user && user.hasLicence && isSent(player) ? 
+												'fa-check' : 'fa-envelope-o'"></span><small> ) </small>
 									</a>
 								</div>
 								<div class="row hide-overflow">
 									<small ng-class="!player.query.referrer ? 'text-muted' : ''"
-										title="Referer ou primeiro amigo"> <span class="fa fa-user"></span> <a
+										title="Primeiro amigo (provável referer)"> <span class="fa fa-user"></span> <a
 										target="_blank"
 										ga="'send', 'event', 'erep', 'click', 'referer'"
 										ng-href="{{player.query.referrer}}">
@@ -482,11 +485,11 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<span class="pull-left">
-						{{messagesSent || 0}} mensagens enviadas
+					<span class="pull-left" ng-if="user && $storage.messagesSent">
+						{{$storage.messagesSent}} mensagens enviadas ({{$session.messagesSent}} nessa sessão)
 					</span>
 					<button type="button" class="btn btn-default"
-						title="Atualizar status online" ng-click="execApi()">
+						title="Atualizar status online" ng-click="execApi()" ng-if="user && user.hasLicence">
 						<span class="fa fa-refresh"></span>
 					</button>
 					<button type="button" class="btn btn-success" data-dismiss="modal"

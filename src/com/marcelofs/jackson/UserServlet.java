@@ -27,6 +27,27 @@ public class UserServlet extends HttpServlet {
 	public final DateTimeZone eRepTimeZone = DateTimeZone
 			.forID("America/Los_Angeles");
 
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		
+		Integer sent = null;
+		try {
+			JSONObject incoming = (JSONObject) JSONValue.parse(req.getReader());
+			sent = Integer.parseInt(incoming.get("messagesSent").toString());
+		} catch (Exception e) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+		
+		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
+			Users dao = new Users(pm);
+			User user = dao.getCurrent();
+			user.setMessagesSent(sent);
+		}
+		
+		resp.getWriter().write("{\"messagesSent\": " + sent + "}");
+	}
+	
 	public void doPut(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
@@ -40,7 +61,7 @@ public class UserServlet extends HttpServlet {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		}
-		
+				
 		String sender = UserServiceFactory.getUserService().getCurrentUser()
 				.getEmail();
 
@@ -71,6 +92,7 @@ public class UserServlet extends HttpServlet {
 				response.put("id", user.getId());
 				response.put("party", user.getParty());
 				response.put("mu", user.getMu());
+				response.put("messagesSent", user.getMessagesSent());
 				response.put("hasLicence", dao.hasLicence(user));
 				response.put("hasLicence", true); // FIXME
 			} catch (JDOObjectNotFoundException e) {

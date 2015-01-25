@@ -18,7 +18,7 @@ public class User implements Serializable {
 	@PrimaryKey
 	@Persistent
 	private Key key;
-	
+
 	@Persistent
 	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private String email;
@@ -42,7 +42,10 @@ public class User implements Serializable {
 	@Persistent
 	@Extension(vendorName = "datanucleus", key = "gae.unindexed", value = "true")
 	private String expires;
-	
+
+	@Persistent
+	private Integer messagesSent;
+
 	public String getEmail() {
 		return email;
 	}
@@ -97,5 +100,14 @@ public class User implements Serializable {
 
 	public void setExpires(String expires) {
 		this.expires = expires;
+	}
+
+	public Integer getMessagesSent() {
+		return messagesSent != null ? messagesSent : 0;
+	}
+
+	public void setMessagesSent(Integer messagesSent) {
+		if (messagesSent > getMessagesSent())
+			this.messagesSent = messagesSent;
 	}
 }
