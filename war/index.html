@@ -101,6 +101,7 @@
 							href="/login"
 							ga="'send', 'pageview', '/login'">
 							<span class="fa fa-power-off"></span>
+							<span ng-if="!user">Fazer login</span>
 						</a>
 					</div>
 				</form>
@@ -148,7 +149,9 @@
 				<li>Filtre jogadores por nível, jornal, MU, etc!</li>
 				<li>Marque para quem você já enviou mensagem!</li>
 			</ul>
-			<p ng-if="!user">Faça seu login e ganhe 3 dias gratuitos!</p>
+			<p ng-if="!user">
+				<a href="/login" ga="'send', 'pageview', '/login'">Faça seu login e ganhe 3 dias gratuitos!</a>
+			</p>
 			<p ng-if="user">Compre seu pacote no 
 				<a href="http://qchat.rizon.net/?channels=jackson"
 				ga="'send', 'pageview', '/chat'">#jackson</a>
