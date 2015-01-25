@@ -94,6 +94,7 @@ public class UserServlet extends HttpServlet {
 				response.put("mu", user.getMu());
 				response.put("messagesSent", user.getMessagesSent());
 				response.put("hasLicence", dao.hasLicence(user));
+				response.put("expires", user.getExpires());
 			} catch (JDOObjectNotFoundException e) {
 				resp.sendRedirect("/login?create");
 			}
