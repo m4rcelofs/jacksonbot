@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTimeZone;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -25,6 +26,28 @@ public class UserServlet extends HttpServlet {
 
 	public final DateTimeZone eRepTimeZone = DateTimeZone
 			.forID("America/Los_Angeles");
+
+	public void doPut(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+
+		String message = null;
+		try {
+			JSONObject incoming = (JSONObject) JSONValue.parse(req.getReader());
+			message = incoming.get("message").toString();
+		} catch (Exception e) {}
+
+		if(message == null) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+		
+		String sender = UserServiceFactory.getUserService().getCurrentUser()
+				.getEmail();
+
+		Mailer m = new Mailer();
+		m.mail("Feedback de " + sender + " recebido", message,
+				m.new MailAddress(sender), m.new MailAddress("admins"));
+	}
 
 	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

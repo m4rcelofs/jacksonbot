@@ -179,7 +179,9 @@ angular.module('jacksonServices').factory('Jackson',
 		return {
 			api : $resource('api'),
 			players : $resource('get'),
-			user : $resource('user')
+			user : $resource('user', {}, {
+				feedback: {method: 'PUT'}
+			})
 		};
 } ]);
 /*
@@ -303,12 +305,20 @@ angular
  * START OF FILE - /JacksonBot/war/js/services/Modal.js
  */
 angular.module('jacksonServices').service('Modal', [ function() {
-	var id = 'newUsers';
-	var show = function() {
-		$('#' + id).modal('show');
+	var defaultId = 'newUsers';
+	var show = function(id) {
+		$('#' + id || defaultId).modal('show');
+	};
+	var toggle = function(id) {
+		$('#' + id || defaultId).modal('toggle');
+	};
+	var hide = function(id) {
+		$('#' + id || defaultId).modal('hide');
 	};
 	return {
-		show : show
+		show : show,
+		toggle : toggle,
+		hide : hide
 	};
 } ]);
 /*
@@ -484,6 +494,15 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 					//TODO
 				}
 				return result;
+			};
+			
+			$scope.sendFeedback = function() {
+				var wtfScope = angular.element($('#feedbackMessage')[0]).scope();
+				if(wtfScope.feedbackMessage) {
+					Jackson.user.feedback({message: wtfScope.feedbackMessage}, function(data){
+						wtfScope.feedbackMessage = 'Mensagem enviada com sucesso!';
+					});					
+				}
 			};
 			
 			$scope.maxDate = Util.dateToString(new Date());

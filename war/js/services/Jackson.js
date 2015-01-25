@@ -3,6 +3,8 @@ angular.module('jacksonServices').factory('Jackson',
 		return {
 			api : $resource('api'),
 			players : $resource('get'),
-			user : $resource('user')
+			user : $resource('user', {}, {
+				feedback: {method: 'PUT'}
+			})
 		};
 } ]);

@@ -132,6 +132,15 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 				return result;
 			};
 			
+			$scope.sendFeedback = function() {
+				var wtfScope = angular.element($('#feedbackMessage')[0]).scope();
+				if(wtfScope.feedbackMessage) {
+					Jackson.user.feedback({message: wtfScope.feedbackMessage}, function(data){
+						wtfScope.feedbackMessage = 'Mensagem enviada com sucesso!';
+					});					
+				}
+			};
+			
 			$scope.maxDate = Util.dateToString(new Date());
 
 			Jackson.user.get({}, function(data){
