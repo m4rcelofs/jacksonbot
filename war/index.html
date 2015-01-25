@@ -86,7 +86,7 @@
 							<span class="fa fa-comment-o"></span>
 						</button>
 					</div>
-					<div class="btn-group">
+					<div class="btn-group" ng-if="user">
 						<button type="button" class="btn btn-default" data-toggle="modal"
 							data-target="#config" ng-click="configClick()"
 							ga="'send', 'pageview', '/config'"
@@ -217,7 +217,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="config" tabindex="-2" role="dialog">
+	<div class="modal fade" id="config" tabindex="-2" role="dialog" ng-if="user">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -231,7 +231,7 @@
 					<h4 class="modal-title">Configurações</h4>
 				</div>
 				<div class="modal-body">
-					<form ng-if="user">
+					<form>
 						<div>
 							<span class="fa fa-user"></span>
 							<a ng-href="http://www.erepublik.com/en/citizen/profile/{{user.id}}">{{user.nick}}</a>
@@ -485,7 +485,7 @@
 						{{$storage.messagesSent}} mensagens enviadas ({{$session.messagesSent}} nessa sessão)
 					</span>
 					<button type="button" class="btn btn-default"
-						title="Atualizar status online" ng-click="execApi()" ng-if="user && user.hasLicence">
+						title="Atualizar status online" ng-click="execApi()" ng-if="user">
 						<span class="fa fa-refresh"></span>
 					</button>
 					<button type="button" class="btn btn-success" data-dismiss="modal"
