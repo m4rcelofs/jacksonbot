@@ -26,6 +26,7 @@ public class Users extends GenericDAO<User> {
 		User user = new User();
 		user.setKey(toKey(gUser.getUserId()));
 		user.setEmail(gUser.getEmail());
+		user.setExpires(new LocalDate(eRepTimeZone).plusDays(3).toString("yyyy-MM-dd"));
 		return add(user);
 	}
 

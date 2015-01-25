@@ -12,7 +12,6 @@ import org.joda.time.LocalDate;
 import org.joda.time.Months;
 import org.json.simple.JSONArray;
 
-import com.google.appengine.api.users.UserServiceFactory;
 import com.marcelofs.jackson.persistence.CloseablePM;
 import com.marcelofs.jackson.persistence.PMF;
 import com.marcelofs.jackson.persistence.dao.NewUsersDays;
@@ -35,8 +34,6 @@ public class NewPlayersServlet extends HttpServlet {
 		try (CloseablePM pm = PMF.getNewPersistenceManager()) {
 
 			boolean hasLicence = new Users(pm).hasLicence();
-			
-			hasLicence = UserServiceFactory.getUserService().isUserLoggedIn(); //FIXME
 
 			LocalDate from;
 			LocalDate today = new LocalDate(eRepTimeZone);
@@ -52,7 +49,7 @@ public class NewPlayersServlet extends HttpServlet {
 				from = today.minus(Months.ONE);
 			}
 			NewUsersDays dao = new NewUsersDays(pm);
-			List<NewUsersDay> players = dao.getFrom(from, hasLicence ? today : today.minusDays(3));
+			List<NewUsersDay> players = dao.getFrom(from, hasLicence ? today : today.minusDays(2));
 			response.addAll(players);
 		}
 
