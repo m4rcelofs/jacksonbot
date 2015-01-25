@@ -523,7 +523,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 						$scope.user.messagesSent = response.messagesSent;
 					});
 				}
-			}, 60000); //1min
+			}, 30000); //30s
 			
 			$scope.isSent = function(player) {
 				return $storage[$scope.selectedDay] && $storage[$scope.selectedDay][player.id];
