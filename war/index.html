@@ -69,6 +69,13 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
+			 	<button type="button" class="navbar-toggle collapsed" 
+			 		data-toggle="collapse" data-target="#navbar">
+        			<span class="sr-only">Toggle navigation</span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
 				<a class="navbar-brand" target="_blank"
 					href="http://www.erepublik.com/en/economy/donate-money/5313713"
 					ga="'send', 'event', 'erep', 'click', 'sponsor'">
@@ -105,7 +112,7 @@
 						</a>
 					</div>
 				</form>
-				<form class="navbar-form navbar-right" role="search"
+				<form class="navbar-form navbar-right hidden-xs hidden-sm" role="search"
 					ng-submit="load()" ga-on="submit"
 					ng-if="user && user.hasLicence"
 					ga="[
@@ -150,7 +157,7 @@
 				<li>Marque para quem você já enviou mensagem!</li>
 			</ul>
 			<p ng-if="!user">
-				<a href="/login" ga="'send', 'pageview', '/login'">Faça seu login e ganhe 3 dias gratuitos!</a>
+				<a href="/login" ga="'send', 'pageview', '/login'">Faça seu primeiro login e ganhe 3 dias gratuitos!</a>
 			</p>
 			<p ng-if="user">Compre seu pacote no 
 				<a href="http://qchat.rizon.net/?channels=jackson"
@@ -158,7 +165,13 @@
 				: 30d = 5g, 6m = 24g, 12m = 36g
 			</p> 
 		</div>
-		<highchart id="chart" config="JacksonChart"></highchart>
+		<highchart class="hidden-xs" id="chart" config="JacksonChart"></highchart>
+		<div class="visible-xs">
+			<div class="alert alert-info text-center" role="alert">
+				<span class="glyphicon glyphicon-exclamation-sign"></span> 
+				Você precisa de uma resolução maior para conseguir ver o gráfico (:
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6">
 				<button type="button" class="btn btn-lg btn-block btn-success"
@@ -320,7 +333,7 @@
 	    							<div id="filters" class="panel-collapse collapse in" role="tabpanel">
 	      								<div class="panel-body">
 	      									<div class="row">
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.avatar"
@@ -328,7 +341,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.party"
@@ -336,7 +349,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.newspaper"
@@ -344,7 +357,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.mu"
@@ -354,7 +367,7 @@
 	      										</div>
 	      									</div>
 	      									<div class="row">
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.alive"
@@ -362,7 +375,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.level"
@@ -370,7 +383,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.friends"
@@ -378,7 +391,7 @@
         												</label>
       												</div>
 	      										</div>
-	      										<div class="col-md-3">
+	      										<div class="col-md-3 col-xs-6">
 	      											<div class="checkbox">
         												<label>
           													<input type="checkbox" ng-model="$storage.search.messaged"
@@ -395,15 +408,15 @@
 					</div>
 					<div class="row">
 						<div ng-repeat="player in selectedNewPlayers | filter:doSearch">
-							<div class="col-md-1"
+							<div class="col-md-1 col-xs-2"
 								ng-class="'[online]' === player.query.status ? 'bg-success' : ''">
 								<div class="row">
 									<img ng-src="{{player.avatar || '/img/profile_avatar.png'}}"
 										width="63px"
-										class="img-responsive img-thumbnail col-md-offset-1"></img>
+										class="img-responsive img-thumbnail col-md-offset-1 col-xs-offset-2"></img>
 								</div>
 								<div class="row">
-									<div class="label col-md-offset-1 col-md-10"
+									<div class="label col-md-offset-1 col-md-10 col-xs-offset-2 col-xs-7"
 										ng-class="(player.query.dead || player.query.ban) ? 'label-default' 
 													 : '[online]' === player.query.status ? 'label-success' 
 													 								: 'label-primary'">
@@ -425,7 +438,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-5"
+							<div class="col-md-5 col-xs-9"
 								ng-class="'[online]' === player.query.status ? 'bg-success' : ''">
 								<div class="row hide-overflow">
 									<a target="_blank"
