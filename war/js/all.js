@@ -474,7 +474,7 @@ angular.module('jacksonControllers').controller('JacksonCtrl', [
 					result = item.avatar && (item.avatar.indexOf('default_male.gif') == -1);
 				}
 				if(result && $storage.search.party) {
-					result = item.query.party || false;
+					result = !item.query.party;
 				}
 				if(result && $storage.search.newspaper) {
 					result = item.query.newspaper || false;
