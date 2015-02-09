@@ -175,6 +175,7 @@
 		<div class="row">
 			<div class="col-md-offset-3 col-md-6">
 				<button type="button" class="btn btn-lg btn-block btn-success"
+					ng-if="user"
 					ng-click="select()"
 					ga="[
 						 ['send', 'event', 'button', 'click', 'view new button'], 
@@ -182,6 +183,8 @@
 						]">
 					Ver novos jogadores do dia {{selectedDay}}!
 				</button>
+				<a class="btn btn-lg btn-block btn-success" href="/login"
+					ng-if="!user">Faça seu login / registre-se, é gratuito!</a>
 			</div>
 		</div>
 	</div>
