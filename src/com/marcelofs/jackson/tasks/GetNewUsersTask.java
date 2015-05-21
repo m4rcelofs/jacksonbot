@@ -5,6 +5,8 @@ import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withPayload
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.Consts;
@@ -33,6 +35,9 @@ public class GetNewUsersTask implements DeferredTask {
 	private static final long serialVersionUID = 1L;
 	private final String date;
 	private final boolean sendMessage;
+
+	private static Logger logger = Logger.getLogger(GetNewUsersTask.class
+			.getName());
 
 	public GetNewUsersTask(String date) {
 		this(date, true);
@@ -84,8 +89,9 @@ public class GetNewUsersTask implements DeferredTask {
 
 	protected String[] parseResponse(String html) throws IllegalStateException,
 			IOException {
+		logger.log(Level.WARNING, "Server returned: " + html);
 		Document doc = Jsoup.parse(html);
-		String idList = doc.select(".form-control").val().trim();
+		String idList = doc.select("textarea.form-control").val().trim();
 		return idList.split(",");
 	}
 
